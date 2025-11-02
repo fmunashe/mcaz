@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LanguageSeeder::class,
             RoleSeeder::class,
-            UssdMenuSeeder::class
+            UssdMenuSeeder::class,
+            AccessTokenSeeder::class
         ]);
     }
 }

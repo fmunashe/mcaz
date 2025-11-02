@@ -13,7 +13,9 @@ class UssdSession extends Model
         'session_id',
         'msisdn',
         'current_menu_id',
-        'input_data',
-        'status'
+        'payload_text',
+        'app_id',
+        'stage',
+        'application_unique_id'
     ];
 }

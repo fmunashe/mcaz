@@ -34,10 +34,14 @@ class UssdController extends Controller
 
             $formattedXMLResponse['countryName'] = 'Zimbabwe';
 
+            Log::info("formatted response is ",$formattedXMLResponse);
+
             try {
                 //Map the data for to conform to the request sent to Main USSD.
                 $ussdResponse = $this->restCallToUSSD($this->mapArrayForUSSD($formattedXMLResponse), $formattedXMLResponse['stage'] == 'FIRST', $session_id);
 
+
+                Log::info("=== controller response is === ",$ussdResponse);
                 if ($ussdResponse['responseExitCode'] != 200) {
                     throw new \Exception($ussdResponse['message']);
                 }
@@ -70,11 +74,14 @@ class UssdController extends Controller
 
     private function restCallToUSSD($body, $is_start, $session_id)
     {
+        Log::info("body is ",$body);
         $body['text'] = $session_id ? $body['text'] : "";
         $body['sessionId'] = $session_id;
         try {
-            $dataProcessor = new UssdBackendController();
-            return $dataProcessor->process($body);
+            $dataProcessor = new UssdMenuProcessor();
+            $response = $dataProcessor->process($body);
+
+            return $response;
         } catch (\Exception $e) {
             Log::info("danger here ", [$e->getMessage()]);
             return response($e->getMessage(), 500);

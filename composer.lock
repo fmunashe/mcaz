@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "044c0839c1b3562b7d164e884477bb8a",
+    "content-hash": "0c94160468bdd3c06f9490563f91b9be",
     "packages": [
         {
             "name": "brick/math",
@@ -3476,6 +3476,68 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "sparors/laravel-ussd",
+            "version": "v2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sparors/laravel-ussd.git",
+                "reference": "a4c38a387a38e08d46b53399baa5418b6b26c2ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sparors/laravel-ussd/zipball/a4c38a387a38e08d46b53399baa5418b6b26c2ce",
+                "reference": "a4c38a387a38e08d46b53399baa5418b6b26c2ce",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5|~6|~7|~8|~9|~10|~11|~12"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3|~4|~5|~6|~7|~8|~9|~10",
+                "phpunit/phpunit": "^9.5",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Ussd": "Sparors\\Ussd\\Facades\\Ussd"
+                    },
+                    "providers": [
+                        "Sparors\\Ussd\\UssdServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sparors\\Ussd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sparors Inc",
+                    "email": "isaacsai030@gmail.com",
+                    "homepage": "https://sparors.github.io"
+                }
+            ],
+            "description": "Create ussd with ease",
+            "homepage": "https://github.com/sparors/laravel-ussd",
+            "keywords": [
+                "laravel",
+                "ussd"
+            ],
+            "support": {
+                "issues": "https://github.com/sparors/laravel-ussd/issues",
+                "source": "https://github.com/sparors/laravel-ussd/tree/v2.7.0"
+            },
+            "time": "2025-03-20T20:40:40+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8596,8 +8658,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2",
-        "ext-simplexml": "*",
-        "ext-libxml": "*"
+        "ext-libxml": "*",
+        "ext-simplexml": "*"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

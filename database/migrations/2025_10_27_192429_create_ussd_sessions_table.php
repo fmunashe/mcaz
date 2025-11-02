@@ -14,9 +14,11 @@ return new class extends Migration {
             $table->id();
             $table->text('session_id')->comment('Provided by telco gateway');
             $table->text('msisdn')->comment('MSISDN of user');
-            $table->bigInteger('current_menu_id')->comment('Current active menu');
-            $table->json('input_data')->comment('Stores entered values (PINs, names, etc.)');
-            $table->enum('status', ['active', 'completed', 'failed'])->default('active')->comment('Session state');
+            $table->bigInteger('current_menu_id')->comment('Current active menu')->nullable();
+            $table->text("app_id")->comment("Application ID");
+            $table->text("application_unique_id")->comment("Application Unique ID");
+            $table->integer("stage")->comment("Stage")->nullable();
+            $table->text("payload_text")->comment("Payload Text")->nullable();
             $table->timestamps();
         });
     }
