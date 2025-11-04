@@ -2,18 +2,21 @@
 
 namespace App\Http\Ussd\States;
 
+use App\ClearSession;
 use Sparors\Ussd\State;
 
 class ExitState extends State
 {
+    use ClearSession;
     protected $action = self::PROMPT;
     protected function beforeRendering(): void
     {
         $this->menu->text('Thank you for using our service');
+        $this->clearSession($this->record->get('sessionId'));
     }
 
     protected function afterRendering(string $argument): void
     {
-        $this->decision->equal('1', Welcome::class);
+        $this->clearSession($this->record->get('sessionId'));
     }
 }

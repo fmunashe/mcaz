@@ -12,6 +12,9 @@ class InvalidMenuSelection extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Invalid menu selected. Please try again');
+        $this->menu->lineBreak();
+        $this->menu->paginateListing([
+            'Main Menu'], 1, 2, '. ');
         $this->clearSession($this->record->get('sessionId'));
     }
 

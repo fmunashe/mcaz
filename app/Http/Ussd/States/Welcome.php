@@ -2,6 +2,7 @@
 
 namespace App\Http\Ussd\States;
 
+use App\Http\Ussd\Actions\Registration\CheckRegistration;
 use App\Http\Ussd\States\Registration\Register;
 use Sparors\Ussd\State;
 
@@ -28,10 +29,10 @@ class Welcome extends State
     protected function afterRendering(string $argument): void
     {
         $this->decision->equal('1', Login::class);
-        $this->decision->equal('2', Register::class);
+        $this->decision->equal('2', CheckRegistration::class);
         $this->decision->equal('3', ContinueWithoutRegistering::class);
         $this->decision->equal('4', Help::class);
         $this->decision->equal('5', ExitState::class);
-        $this->decision->any( InvalidMenuSelection::class);
+        $this->decision->any(InvalidMenuSelection::class);
     }
 }
