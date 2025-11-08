@@ -15,7 +15,9 @@ class RoleSeeder extends Seeder
         $roles = [
             ['id' => 1, 'name' => 'Healthcare Worker'],
             ['id' => 2, 'name' => 'Patient'],
-            ['id' => 3, 'name' => 'Other'],
+            ['id' => 3, 'name' => 'Investigator'],
+            ['id' => 4, 'name' => 'Sponsor'],
+            ['id' => 5, 'name' => 'Other'],
         ];
         foreach ($roles as $role) {
             Role::query()->firstOrCreate($role);

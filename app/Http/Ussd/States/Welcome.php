@@ -19,11 +19,7 @@ class Welcome extends State
                 'Register User',
                 'Continue without registering (You won’t be able to be identified and may not receive feedback if you select this option)',
                 'Help',
-                'Exit'], 1, 5, '. ')
-            ->lineBreak(2)
-            ->line('9. Next Page')
-            ->line('#. Back')
-            ->line('Main Menu');
+                'Exit'], 1, 5, '. ');
     }
 
     protected function afterRendering(string $argument): void

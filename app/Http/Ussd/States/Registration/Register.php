@@ -11,24 +11,18 @@ class Register extends State
 {
     protected function beforeRendering(): void
     {
+        $roles = Role::query()->pluck('name')->toArray();
+        $roles[] = 'Exit';
         $this->menu->text('Select Role')
             ->lineBreak(2)
-            ->paginateListing([
-                'Healthcare Worker',
-                'Patient',
-                'Other',
-                'Exit'], 1, 5, '. ')
-            ->lineBreak(2)
-            ->line('9. Next Page')
-            ->line('#. Back')
-            ->line('Main Menu');
+            ->paginateListing($roles, 1, 6, '. ');
     }
 
     protected function afterRendering(string $argument): void
     {
         $roleOption = $argument;
 
-        if (in_array($roleOption, ['1', '2', '3'])) {
+        if (in_array($roleOption, ['1', '2', '3','4','5'])) {
             $role = Role::query()->where('id', $roleOption)->first();
             if ($role) {
                 $this->record->set('roleId', $role->id);
