@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->foreignIdFor(Role::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('otp');
             $table->boolean('accepted_terms')->default(false);
+            $table->enum('notify_via', ['sms', 'email'])->default('email');
             $table->timestamps();
         });
     }
