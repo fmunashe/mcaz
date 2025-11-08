@@ -12,13 +12,13 @@ class MyProfile extends State
     {
         $this->menu->paginateListing([
             'View Profile',
-            'Edit Contact (Phone/Email → OTP verify)',
-            'Change PIN / Password',
+            'Edit Contact',
+            'Change PIN',
             'Language Preference',
-            'Profession / Role',
-            'Link Facility / Institution',
-            'Notification Preferences (SMS / Email)',
-            'Privacy & Deactivation',
+            'Profession',
+            'Link Institution',
+            'Notification Preferences',
+            'Privacy and Deactivation',
             'Back'], 1, 10, '. ');
     }
 

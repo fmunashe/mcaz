@@ -24,6 +24,8 @@ return new class extends Migration {
             $table->string('otp');
             $table->boolean('accepted_terms')->default(false);
             $table->enum('notify_via', ['sms', 'email'])->default('email');
+            $table->text('institution')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

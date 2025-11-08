@@ -25,6 +25,7 @@ class Login extends State
             ->first();
         if ($client) {
             if (Hash::check($pin, $client->pin)) {
+                $this->record->set('isLoggedIn', true);
                 $this->decision->any(Dashboard::class);
             } else {
                 $this->decision->any(LoginFailedIncorrectPin::class);

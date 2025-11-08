@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Ussd\States;
+namespace App\Http\Ussd\States\Help;
 
+use App\Http\Ussd\Actions\CheckLoggedIn;
+use App\Http\Ussd\States\InvalidMenuSelection;
+use App\Http\Ussd\States\Welcome;
 use Sparors\Ussd\State;
 
-class Help extends State
+class HelpAndSupport extends State
 {
     protected function beforeRendering(): void
     {
@@ -24,7 +27,7 @@ class Help extends State
         $this->decision->equal('2', WhatIsAdrAefiProductDefect::class);
         $this->decision->equal('3', HowToReportAdrAefiProductDefectComplaint::class);
         $this->decision->equal('4', ContactMcazSupport::class);
-        $this->decision->equal('5', Welcome::class);
+        $this->decision->equal('5', CheckLoggedIn::class);
         $this->decision->any(InvalidMenuSelection::class);
     }
 }

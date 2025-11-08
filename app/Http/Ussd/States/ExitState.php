@@ -8,7 +8,6 @@ use Sparors\Ussd\State;
 class ExitState extends State
 {
     use ClearSession;
-    protected $action = self::PROMPT;
     protected function beforeRendering(): void
     {
         $this->menu->text('Thank you for using our service');
@@ -18,5 +17,6 @@ class ExitState extends State
     protected function afterRendering(string $argument): void
     {
         $this->clearSession($this->record->get('sessionId'));
+        $this->decision->any(Welcome::class);
     }
 }

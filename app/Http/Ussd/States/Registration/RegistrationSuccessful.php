@@ -4,6 +4,7 @@ namespace App\Http\Ussd\States\Registration;
 
 use App\ClearSession;
 use App\Http\Ussd\States\ExitState;
+use App\Http\Ussd\States\Welcome;
 use App\Models\Client;
 use Illuminate\Support\Facades\Hash;
 use Sparors\Ussd\State;
@@ -18,12 +19,15 @@ class RegistrationSuccessful extends State
     {
         $this->menu->text('Registration Successful you can now log in.')
             ->lineBreak(2);
+        $this->menu->paginateListing([
+            'Main Menu'], 1, 2, '. ');
         $this->registerClient();
     }
 
     protected function afterRendering(string $argument): void
     {
-        $this->action->any(ExitState::class);
+        $this->decision->equal('1', Welcome::class);
+        $this->decision->any(ExitState::class);
     }
 
     protected function registerClient(): void
