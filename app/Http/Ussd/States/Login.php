@@ -13,8 +13,7 @@ class Login extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->text('Enter PIN')
-            ->lineBreak(2);
+        $this->menu->text('Enter PIN');
     }
 
     protected function afterRendering(string $argument): void

@@ -10,7 +10,6 @@ class ConfirmNewPin extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Confirm your new PIN');
-        $this->menu->lineBreak(2);
     }
 
     protected function afterRendering(string $argument): void

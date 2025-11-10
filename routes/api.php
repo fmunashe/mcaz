@@ -3,6 +3,7 @@
 use App\Http\Controllers\UssdBackendController;
 use App\Http\Controllers\UssdController;
 use App\Http\Controllers\UssdMenuProcessor;
+use App\Http\Controllers\WhatsappBotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,8 @@ Route::prefix('v1/')->group(function () {
 
 Route::prefix('v1/')->group(function () {
     Route::post('mcaz/ussd/processor/live', [UssdMenuProcessor::class, 'process'])->name("mcazMenuProcessor");
+});
+
+Route::prefix('v1/')->group(function () {
+    Route::post('mcaz/ussd/whatsapp/live', [WhatsappBotController::class, 'process'])->name("mcazWhatsappMenuProcessor");
 });

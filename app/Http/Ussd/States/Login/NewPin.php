@@ -9,7 +9,7 @@ class NewPin extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Enter your new PIN');
-        $this->menu->lineBreak(2);
+        $this->menu->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

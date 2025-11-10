@@ -12,7 +12,7 @@ class PinResetEmailNotFound extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Email address entered not found.');
-        $this->menu->lineBreak(2)
+        $this->menu->lineBreak()
             ->paginateListing([
                 'Try again',
                 'Main Menu'], 1, 2, '. ');

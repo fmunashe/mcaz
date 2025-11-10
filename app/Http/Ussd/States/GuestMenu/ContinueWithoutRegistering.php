@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Ussd\States\MainDashboard;
+namespace App\Http\Ussd\States\GuestMenu;
 
 use App\Http\Ussd\States\ExitState;
 use App\Http\Ussd\States\Help\HelpAndSupport;
 use App\Http\Ussd\States\InvalidMenuSelection;
-use App\Http\Ussd\States\MainDashboard\Profile\MyProfile;
 use Sparors\Ussd\State;
 
-class Dashboard extends State
+class ContinueWithoutRegistering extends State
 {
     protected function beforeRendering(): void
     {
@@ -22,7 +21,6 @@ class Dashboard extends State
             'Make an enquiry',
             'My submissions',
             'Notifications',
-            'My Profile',
             'Help',
             'Exit'], 1, 15, '. ');
     }
@@ -33,12 +31,11 @@ class Dashboard extends State
         $this->decision->equal('2', ReportAefi::class);
         $this->decision->equal('3', ReportQualityProblem::class);
         $this->decision->equal('4', SubmitComplaint::class);
-        $this->decision->in(['5', '10'], HelpAndSupport::class);
+        $this->decision->in(['5', '9'], HelpAndSupport::class);
         $this->decision->equal('6', MakeEnquiry::class);
         $this->decision->equal('7', MySubmissions::class);
         $this->decision->equal('8', Notifications::class);
-        $this->decision->equal('9', MyProfile::class);
-        $this->decision->equal('11', ExitState::class);
+        $this->decision->equal('10', ExitState::class);
         $this->decision->any(InvalidMenuSelection::class);
     }
 }

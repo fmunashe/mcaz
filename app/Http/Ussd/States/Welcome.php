@@ -3,18 +3,16 @@
 namespace App\Http\Ussd\States;
 
 use App\Http\Ussd\Actions\Registration\CheckRegistration;
+use App\Http\Ussd\States\GuestMenu\ContinueWithoutRegistering;
 use App\Http\Ussd\States\Help\HelpAndSupport;
-use App\Http\Ussd\States\Registration\Register;
 use Sparors\Ussd\State;
 
 class Welcome extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->text('Welcome to MCAZ')
-            ->lineBreak(2)
-            ->line("Report medicine or vaccine side effects or product quality issues, or submit a complaint or submit an enquiry.")
-            ->lineBreak(2)
+        $this->menu->line('Welcome to MCAZ')
+            ->line("Report medicine or vaccine side effects or product quality issues or submit a complaint or submit an enquiry.")
             ->paginateListing([
                 'Login',
                 'Register User',

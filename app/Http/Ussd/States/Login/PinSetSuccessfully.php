@@ -13,7 +13,7 @@ class PinSetSuccessfully extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Your PIN has been set successfully');
-        $this->menu->lineBreak(2);
+        $this->menu->lineBreak();
         $this->menu->paginateListing([
             'Main Menu',
             'Login',

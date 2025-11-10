@@ -9,7 +9,6 @@ use Sparors\Ussd\State;
 
 class ViewProfile extends State
 {
-    protected $action = self::PROMPT;
     protected function beforeRendering(): void
     {
         $user = Client::query()->where('phone',$this->record->get('phoneNumber'))->first();

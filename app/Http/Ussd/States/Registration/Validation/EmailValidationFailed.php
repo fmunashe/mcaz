@@ -10,7 +10,7 @@ class EmailValidationFailed extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Invalid email address. Please enter a valid email')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

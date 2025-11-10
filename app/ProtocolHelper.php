@@ -29,8 +29,6 @@ trait ProtocolHelper
             $result = json_decode(json_encode($xmlObject), true);
         }
 
-        Log::info("=== result is === ", $result);
-
         return [
             'transactionTime' => $result['transactionTime'],
             'transactionID' => $result['transactionID'],

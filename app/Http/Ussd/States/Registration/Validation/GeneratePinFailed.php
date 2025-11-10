@@ -10,7 +10,7 @@ class GeneratePinFailed extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Invalid PIN format. Please enter exactly 4 digits')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

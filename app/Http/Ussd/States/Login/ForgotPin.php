@@ -16,7 +16,6 @@ class ForgotPin extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Enter your email address');
-        $this->menu->lineBreak(2);
     }
 
     protected function afterRendering(string $argument): void

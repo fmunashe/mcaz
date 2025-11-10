@@ -34,8 +34,6 @@ class UssdController extends Controller
 
             $formattedXMLResponse['countryName'] = 'Zimbabwe';
 
-            Log::info("formatted response is ",$formattedXMLResponse);
-
             try {
                 //Map the data for to conform to the request sent to Main USSD.
                 $ussdResponse = $this->restCallToUSSD($this->mapArrayForUSSD($formattedXMLResponse), $formattedXMLResponse['stage'] == 'FIRST', $session_id);

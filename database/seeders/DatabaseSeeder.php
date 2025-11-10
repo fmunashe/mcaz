@@ -20,7 +20,12 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             RoleSeeder::class,
             UssdMenuSeeder::class,
-            AccessTokenSeeder::class
+            AccessTokenSeeder::class,
+            ActionTakenSeeder::class,
+            ADROutcomeSeeder::class,
+            ADRSeriousReasonSeeder::class,
+            GenderSeeder::class,
+            DurationSeeder::class
         ]);
     }
 }

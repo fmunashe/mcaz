@@ -18,7 +18,7 @@ class RegistrationSuccessful extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Registration Successful you can now log in.')
-            ->lineBreak(2);
+            ->lineBreak();
         $this->menu->paginateListing([
             'Main Menu'], 1, 2, '. ');
         $this->registerClient();

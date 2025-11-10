@@ -9,7 +9,7 @@ class Username extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Enter Username')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

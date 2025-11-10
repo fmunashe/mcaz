@@ -11,7 +11,7 @@ class LoginFailedIncorrectPin extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Invalid PIN. Please try again');
-        $this->menu->lineBreak(2)
+        $this->menu->lineBreak()
             ->paginateListing([
                 'Try again',
                 'Forgot Pin'], 1, 2, '. ');

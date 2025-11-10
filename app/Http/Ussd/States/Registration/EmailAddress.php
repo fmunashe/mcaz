@@ -2,7 +2,6 @@
 
 namespace App\Http\Ussd\States\Registration;
 
-use App\Http\Ussd\States\Registration\Username;
 use App\Http\Ussd\States\Registration\Validation\EmailValidationFailed;
 use Sparors\Ussd\State;
 
@@ -11,7 +10,7 @@ class EmailAddress extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Enter Email Address')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

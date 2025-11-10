@@ -14,7 +14,6 @@ class ClientAlreadyRegistered extends State
     {
         $this->menu->text('Client already registered');
         $this->menu->lineBreak();
-        $this->menu->lineBreak(2);
         $this->menu->paginateListing([
             'Main Menu',
             'Login',

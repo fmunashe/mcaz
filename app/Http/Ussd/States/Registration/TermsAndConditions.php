@@ -15,7 +15,7 @@ class TermsAndConditions extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Accept Terms & Privacy Policy (For Data Protection Laws)')
-            ->lineBreak(2)
+            ->lineBreak()
             ->paginateListing([
                 'Yes',
                 'No',

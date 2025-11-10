@@ -11,7 +11,7 @@ class RoleSelection extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Select Role')
-            ->lineBreak(2)
+            ->lineBreak()
             ->paginateListing([
                 'Healthcare Worker',
                 'Patient',

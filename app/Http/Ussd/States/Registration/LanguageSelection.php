@@ -12,7 +12,7 @@ class LanguageSelection extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Please select your language')
-            ->lineBreak(2)
+            ->lineBreak()
             ->paginateListing([
                 'English',
                 'Ndebele',

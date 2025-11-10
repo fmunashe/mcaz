@@ -9,7 +9,7 @@ class OTP extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('Enter OTP ( that was sent via SMS or Email)')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void

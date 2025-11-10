@@ -11,7 +11,7 @@ class ConfirmPinFailed extends State
     protected function beforeRendering(): void
     {
         $this->menu->text('PIN does not match. Please try again')
-            ->lineBreak(2);
+            ->lineBreak();
     }
 
     protected function afterRendering(string $argument): void
