@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Defect;
+use App\Models\ProductDefect;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adverse_events', function (Blueprint $table) {
+        Schema::create('nature_of_defects', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('adverse_event');
+            $table->foreignIdFor(ProductDefect::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Defect::class)->constrained()->cascadeOnDelete();
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adverse_events');
+        Schema::dropIfExists('nature_of_defects');
     }
 };

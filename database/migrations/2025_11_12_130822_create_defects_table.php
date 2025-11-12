@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adverse_events', function (Blueprint $table) {
+        Schema::create('defects', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('adverse_event');
+            $table->string('defect');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adverse_events');
+        Schema::dropIfExists('defects');
     }
 };
