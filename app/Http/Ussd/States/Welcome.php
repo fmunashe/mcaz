@@ -23,6 +23,7 @@ class Welcome extends State
 
     protected function afterRendering(string $argument): void
     {
+        $this->record->set('isLoggedIn', false);
         $this->decision->equal('1', Login::class);
         $this->decision->equal('2', CheckRegistration::class);
         $this->decision->equal('3', ContinueWithoutRegistering::class);

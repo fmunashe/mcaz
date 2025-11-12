@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('received_by')->nullable();
             $table->string('signature')->nullable();
             $table->string('date_received')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -8,4 +8,9 @@ trait OTPGeneration
     {
         return rand(1000, 9999);
     }
+
+    public function generateReferenceNumber(): string
+    {
+        return "REF-" . rand(10000, 999999);
+    }
 }
