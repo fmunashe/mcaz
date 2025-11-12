@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             ADROutcomeSeeder::class,
             ADRSeriousReasonSeeder::class,
             GenderSeeder::class,
-            DurationSeeder::class
+            DurationSeeder::class,
+            AdverseEventSeeder::class,
         ]);
     }
 }

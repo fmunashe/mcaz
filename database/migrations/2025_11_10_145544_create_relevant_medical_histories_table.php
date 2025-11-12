@@ -14,7 +14,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('relevant_medical_histories', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(ADR::class)->constrained()->cascadeOnDelete();
             $table->text('lab_test_results')->nullable();
             $table->foreignIdFor(ActionTaken::class)->nullable()->constrained()->cascadeOnDelete();

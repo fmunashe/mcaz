@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('durations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->enum('duration', ['Hours', 'Days','Weeks','Months','Years']);
             $table->timestamps();
         });

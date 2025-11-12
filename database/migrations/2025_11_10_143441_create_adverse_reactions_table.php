@@ -15,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('adverse_reactions', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(ADR::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('onset_date')->nullable();
             $table->foreignIdFor(Duration::class)->nullable()->constrained()->cascadeOnDelete();

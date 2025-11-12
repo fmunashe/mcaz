@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\ADROutcome;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ADROutcomeSeeder extends Seeder
 {
@@ -14,12 +15,13 @@ class ADROutcomeSeeder extends Seeder
     {
 
         $outcomes = [
-            ['id' => 1, 'outcome' => 'Recovered/resolved'],
-            ['id' => 2, 'outcome' => 'Recovering/resolving'],
-            ['id' => 3, 'outcome' => 'Recovered/resolved with sequelae'],
-            ['id' => 4, 'outcome' => 'Not recovered/not resolved'],
-            ['id' => 5, 'outcome' => 'Fatal'],
-            ['id' => 6, 'outcome' => 'Unknown']
+            ['id' => Str::uuid(), 'outcome' => 'Recovered/resolved'],
+            ['id' => Str::uuid(), 'outcome' => 'Recovering/resolving'],
+            ['id' => Str::uuid(), 'outcome' => 'Recovered/resolved with sequelae'],
+            ['id' => Str::uuid(), 'outcome' => 'Not recovered/not resolved'],
+            ['id' => Str::uuid(), 'outcome' => 'Fatal'],
+            ['id' => Str::uuid(), 'outcome' => 'Unknown'],
+            ['id' => Str::uuid(), 'outcome' => 'Died']
         ];
 
         foreach ($outcomes as $outcome) {

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('genders', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->enum('gender', ['male', 'female', 'other']);
             $table->timestamps();
         });

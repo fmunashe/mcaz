@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class RoleSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            ['id' => 1, 'name' => 'Healthcare Worker'],
-            ['id' => 2, 'name' => 'Patient'],
-            ['id' => 3, 'name' => 'Investigator'],
-            ['id' => 4, 'name' => 'Sponsor'],
-            ['id' => 5, 'name' => 'Other'],
+            ['id' => Str::uuid(), 'name' => 'Healthcare Worker'],
+            ['id' => Str::uuid(), 'name' => 'Patient'],
+            ['id' => Str::uuid(), 'name' => 'Investigator'],
+            ['id' => Str::uuid(), 'name' => 'Sponsor'],
+            ['id' => Str::uuid(), 'name' => 'Other'],
         ];
         foreach ($roles as $role) {
             Role::query()->firstOrCreate($role);

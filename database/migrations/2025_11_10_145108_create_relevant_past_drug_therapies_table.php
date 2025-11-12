@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relevant_past_drug_therapies', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(ADR::class)->constrained()->cascadeOnDelete();
             $table->string('brand_name')->nullable();
             $table->string('batch_number')->nullable();

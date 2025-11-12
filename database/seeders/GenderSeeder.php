@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Gender;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class GenderSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class GenderSeeder extends Seeder
     public function run(): void
     {
         $genders = [
-            ['id' => 1, 'gender' => 'Male'],
-            ['id' => 2, 'gender' => 'Female'],
-            ['id' => 3, 'gender' => 'Other'],
+            ['id' => Str::uuid(), 'gender' => 'Male'],
+            ['id' => Str::uuid(), 'gender' => 'Female'],
+            ['id' => Str::uuid(), 'gender' => 'Other'],
         ];
 
         foreach ($genders as $gender) {

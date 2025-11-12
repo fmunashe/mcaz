@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Duration;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DurationSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class DurationSeeder extends Seeder
     public function run(): void
     {
         $durations = [
-            ['id' => 1, 'duration' => 'Hours'],
-            ['id' => 2, 'duration' => 'Days'],
-            ['id' => 3, 'duration' => 'Weeks'],
-            ['id' => 4, 'duration' => 'Months'],
-            ['id' => 5, 'duration' => 'Years']
+            ['id' => Str::uuid(), 'duration' => 'Hours'],
+            ['id' => Str::uuid(), 'duration' => 'Days'],
+            ['id' => Str::uuid(), 'duration' => 'Weeks'],
+            ['id' => Str::uuid(), 'duration' => 'Months'],
+            ['id' => Str::uuid(), 'duration' => 'Years']
         ];
 
         foreach ($durations as $duration) {

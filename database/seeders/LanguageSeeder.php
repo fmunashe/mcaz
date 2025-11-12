@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Language;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class LanguageSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class LanguageSeeder extends Seeder
     public function run(): void
     {
         $languages = [
-            ['id' => 1, 'name' => 'English'],
-            ['id' => 2, 'name' => 'Ndebele'],
-            ['id' => 3, 'name' => 'Shona']
+            ['id' => Str::uuid(), 'name' => 'English'],
+            ['id' => Str::uuid(), 'name' => 'Ndebele'],
+            ['id' => Str::uuid(), 'name' => 'Shona']
         ];
 
         foreach ($languages as $language) {
