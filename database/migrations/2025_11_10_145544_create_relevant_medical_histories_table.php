@@ -1,0 +1,33 @@
+<?php
+
+use App\Models\ActionTaken;
+use App\Models\ADR;
+use App\Models\ADROutcome;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('relevant_medical_histories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(ADR::class)->constrained()->cascadeOnDelete();
+            $table->text('lab_test_results')->nullable();
+            $table->foreignIdFor(ActionTaken::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ADROutcome::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('relevant_medical_histories');
+    }
+};
