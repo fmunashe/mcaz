@@ -19,8 +19,6 @@ class LanguageSelection extends State
                 'Shona',
                 'Exit'], 1, 5, '. ')
             ->lineBreak(2)
-            ->line('9. Next Page')
-            ->line('#. Back')
             ->line('Main Menu');
     }
 
@@ -29,7 +27,15 @@ class LanguageSelection extends State
         $languageOption = $argument;
 
         if (in_array($languageOption, ['1', '2', '3'])) {
-            $language = Language::query()->where('id', $languageOption)->first();
+            if ($languageOption == '1') {
+                $name = "English";
+            } elseif ($languageOption == '2') {
+                $name = "Ndebele";
+            } elseif ($languageOption == '3') {
+                $name = "Shona";
+            }
+
+            $language = Language::query()->where('name', $name)->first();
             if ($language) {
                 $this->record->set('languageId', $language->id);
                 $this->record->set('languageName', $language->name);
@@ -37,6 +43,6 @@ class LanguageSelection extends State
             }
         }
         $this->decision->equal('4', ExitState::class);
-        $this->decision->any( InvalidMenuSelection::class);
+        $this->decision->any(InvalidMenuSelection::class);
     }
 }

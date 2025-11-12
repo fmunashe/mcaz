@@ -6,6 +6,7 @@ use App\ClearSession;
 use App\Http\Ussd\States\ExitState;
 use App\Http\Ussd\States\Welcome;
 use App\Models\Client;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Sparors\Ussd\State;
 

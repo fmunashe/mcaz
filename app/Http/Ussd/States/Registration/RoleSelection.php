@@ -3,7 +3,6 @@
 namespace App\Http\Ussd\States\Registration;
 
 use App\Http\Ussd\States\ExitState;
-use App\Http\Ussd\States\Registration\EnterFullName;
 use Sparors\Ussd\State;
 
 class RoleSelection extends State
