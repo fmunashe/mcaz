@@ -6,13 +6,14 @@ use App\Http\Ussd\States\ExitState;
 use App\Http\Ussd\States\GuestMenu\Complaints\CustomerComplaint;
 use App\Http\Ussd\States\Help\HelpAndSupport;
 use App\Http\Ussd\States\InvalidMenuSelection;
+use App\Http\Ussd\States\MainDashboard\QualityProblemReport\ReportQualityProblem;
 use Sparors\Ussd\State;
 
 class ContinueWithoutRegistering extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Main Menu');
+        $this->menu->line('Guest Menu');
         $this->menu->paginateListing([
             'Report suspected reaction with a medicine (ADR)',
             'Report suspected reaction with a vaccine (AEFI)',

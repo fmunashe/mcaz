@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Models\Defect;
 use App\Models\ProductDefect;
+use Illuminate\Database\Eloquent\Collection;
 
 trait OTPGeneration
 {
@@ -19,5 +21,15 @@ trait OTPGeneration
     function getProductDefectByReference($reference): ?ProductDefect
     {
         return ProductDefect::query()->where('report_number', $reference)->first();
+    }
+
+    function getDefectByName($defect): ?Defect
+    {
+        return Defect::query()->where('name', $defect)->first();
+    }
+
+    public function getDefects(): Collection
+    {
+        return Defect::all();
     }
 }
