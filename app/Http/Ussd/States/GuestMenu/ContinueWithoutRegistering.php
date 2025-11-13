@@ -3,6 +3,7 @@
 namespace App\Http\Ussd\States\GuestMenu;
 
 use App\Http\Ussd\States\ExitState;
+use App\Http\Ussd\States\GuestMenu\Complaints\CustomerComplaint;
 use App\Http\Ussd\States\Help\HelpAndSupport;
 use App\Http\Ussd\States\InvalidMenuSelection;
 use Sparors\Ussd\State;
@@ -22,7 +23,7 @@ class ContinueWithoutRegistering extends State
             'My submissions',
             'Notifications',
             'Help',
-            'Exit'], 1, 15, '. ');
+            'Exit'], 1, 11, '. ');
     }
 
     protected function afterRendering(string $argument): void
@@ -30,7 +31,7 @@ class ContinueWithoutRegistering extends State
         $this->decision->equal('1', ReportAdr::class);
         $this->decision->equal('2', ReportAefi::class);
         $this->decision->equal('3', ReportQualityProblem::class);
-        $this->decision->equal('4', SubmitComplaint::class);
+        $this->decision->equal('4', CustomerComplaint::class);
         $this->decision->in(['5', '9'], HelpAndSupport::class);
         $this->decision->equal('6', MakeEnquiry::class);
         $this->decision->equal('7', MySubmissions::class);
