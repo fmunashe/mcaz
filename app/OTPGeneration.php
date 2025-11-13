@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\ProductDefect;
+
 trait OTPGeneration
 {
     public function generateOTP(): int
@@ -12,5 +14,10 @@ trait OTPGeneration
     public function generateReferenceNumber(): string
     {
         return "REF-" . rand(10000, 999999);
+    }
+
+    function getProductDefectByReference($reference): ?ProductDefect
+    {
+        return ProductDefect::query()->where('report_number', $reference)->first();
     }
 }

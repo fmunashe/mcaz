@@ -5,8 +5,11 @@ namespace App\Http\Ussd\States\MainDashboard;
 use App\Http\Ussd\States\ExitState;
 use App\Http\Ussd\States\Help\HelpAndSupport;
 use App\Http\Ussd\States\InvalidMenuSelection;
+use App\Http\Ussd\States\MainDashboard\ADR\ReportAdr;
+use App\Http\Ussd\States\MainDashboard\AEFI\ReportAefi;
 use App\Http\Ussd\States\MainDashboard\Complaints\CustomerComplaint;
 use App\Http\Ussd\States\MainDashboard\Profile\MyProfile;
+use App\Http\Ussd\States\MainDashboard\QualityProblemReport\ReportQualityProblem;
 use Sparors\Ussd\State;
 
 class Dashboard extends State
