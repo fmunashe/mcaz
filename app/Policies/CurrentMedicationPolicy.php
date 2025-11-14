@@ -13,7 +13,7 @@ class CurrentMedicationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class CurrentMedicationPolicy
      */
     public function view(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class CurrentMedicationPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**

@@ -13,7 +13,7 @@ class RelevantMedicalHistoryPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class RelevantMedicalHistoryPolicy
      */
     public function view(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class RelevantMedicalHistoryPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**

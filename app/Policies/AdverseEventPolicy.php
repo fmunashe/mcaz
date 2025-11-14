@@ -13,7 +13,7 @@ class AdverseEventPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class AdverseEventPolicy
      */
     public function view(User $user, AdverseEvent $adverseEvent): bool
     {
-        return false;
+        return true;
     }
 
     /**

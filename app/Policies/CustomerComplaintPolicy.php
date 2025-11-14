@@ -13,7 +13,7 @@ class CustomerComplaintPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class CustomerComplaintPolicy
      */
     public function view(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class CustomerComplaintPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
