@@ -21,7 +21,7 @@ class ADROutcomePolicy
      */
     public function view(User $user, ADROutcome $aDROutcome): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class ADROutcomePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**

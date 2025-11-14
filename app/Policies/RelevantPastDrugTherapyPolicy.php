@@ -13,7 +13,7 @@ class RelevantPastDrugTherapyPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class RelevantPastDrugTherapyPolicy
      */
     public function view(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class RelevantPastDrugTherapyPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**

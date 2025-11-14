@@ -13,7 +13,7 @@ class NatureOfDefectPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class NatureOfDefectPolicy
      */
     public function view(User $user, NatureOfDefect $natureOfDefect): bool
     {
-        return false;
+        return true;
     }
 
     /**
