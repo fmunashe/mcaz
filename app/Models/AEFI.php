@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AEFI extends Model
@@ -23,5 +24,10 @@ class AEFI extends Model
     public function adverseEvents(): HasMany
     {
         return $this->hasMany(AEFIAdverseEvent::class);
+    }
+
+    public function ageGroup(): BelongsTo
+    {
+        return $this->belongsTo(AgeGroup::class);
     }
 }

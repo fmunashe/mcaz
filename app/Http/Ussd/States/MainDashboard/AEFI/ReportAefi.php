@@ -8,11 +8,12 @@ class ReportAefi extends State
 {
     protected function beforeRendering(): void
     {
-        //
+        $this->menu->line('Patient full name');
     }
 
     protected function afterRendering(string $argument): void
     {
-        //
+        $this->record->set('patientFullName', $argument);
+        $this->decision->any(PatientFullAddress::class);
     }
 }

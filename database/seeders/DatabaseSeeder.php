@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             DurationSeeder::class,
             AdverseEventSeeder::class,
             DefectSeeder::class,
+            AgeGroupSeeder::class,
         ]);
     }
 }

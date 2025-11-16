@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ADROutcome;
+use App\Models\AgeGroup;
 use App\Models\Gender;
 use App\Models\RelevantMedicalHistory;
 use Illuminate\Database\Migrations\Migration;
@@ -33,6 +34,7 @@ return new class extends Migration {
             $table->string('date_aefi_started')->nullable();
             $table->enum('serious', ['Yes', 'No'])->default('Yes');
             $table->foreignIdFor(ADROutcome::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignIdFor(AgeGroup::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('date_of_death')->nullable();
             $table->enum('autopsy_done', ['Yes', 'No', 'Unknown'])->default('Unknown')->nullable();
             $table->foreignIdFor(RelevantMedicalHistory::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
