@@ -37,7 +37,6 @@ return new class extends Migration {
             $table->foreignIdFor(AgeGroup::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('date_of_death')->nullable();
             $table->enum('autopsy_done', ['Yes', 'No', 'Unknown'])->default('Unknown')->nullable();
-            $table->foreignIdFor(RelevantMedicalHistory::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('investigation_needed', ['Yes', 'No'])->nullable()->default('No');
             $table->string('date_investigation_planned')->nullable();
             $table->string('date_report_received_at_national_level')->nullable();

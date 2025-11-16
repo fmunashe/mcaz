@@ -3,6 +3,7 @@
 use App\Models\ActionTaken;
 use App\Models\ADR;
 use App\Models\ADROutcome;
+use App\Models\AEFI;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,8 @@ return new class extends Migration {
     {
         Schema::create('relevant_medical_histories', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignIdFor(ADR::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ADR::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(AEFI::class)->nullable()->constrained()->cascadeOnDelete();
             $table->text('lab_test_results')->nullable();
             $table->foreignIdFor(ActionTaken::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(ADROutcome::class)->nullable()->constrained()->cascadeOnDelete();

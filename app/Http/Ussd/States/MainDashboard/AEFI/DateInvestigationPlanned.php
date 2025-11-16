@@ -4,16 +4,16 @@ namespace App\Http\Ussd\States\MainDashboard\AEFI;
 
 use Sparors\Ussd\State;
 
-class Address extends State
+class DateInvestigationPlanned extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Reporter Address');
+        $this->menu->line('Date investigation planned');
     }
 
     protected function afterRendering(string $argument): void
     {
-        $this->record->set('address', $argument);
-        $this->decision->any(PhoneNumber::class);
+        $this->record->set('dateInvestigationPlanned', $argument);
+        $this->decision->any(Comments::class);
     }
 }

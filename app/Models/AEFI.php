@@ -30,4 +30,9 @@ class AEFI extends Model
     {
         return $this->belongsTo(AgeGroup::class);
     }
+
+    public function severity(): HasMany
+    {
+        return $this->hasMany(AEFISeverity::class);
+    }
 }

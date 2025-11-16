@@ -22,7 +22,7 @@ class AdverseEventSeeder extends Seeder
             ['id' => Str::uuid(), 'adverse_event' => 'Toxic shock syndrome'],
             ['id' => Str::uuid(), 'adverse_event' => 'Thrombocytopenia'],
             ['id' => Str::uuid(), 'adverse_event' => 'Anaphylaxis'],
-            ['id' => Str::uuid(), 'adverse_event' => 'Fever≥38°C'],
+            ['id' => Str::uuid(), 'adverse_event' => 'Fever'],
             ['id' => Str::uuid(), 'adverse_event' => 'Beyond nearest joint'],
             ['id' => Str::uuid(), 'adverse_event' => 'Febrile'],
             ['id' => Str::uuid(), 'adverse_event' => 'Afebrile'],

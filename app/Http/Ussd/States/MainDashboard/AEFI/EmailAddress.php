@@ -8,7 +8,7 @@ class EmailAddress extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Report email address');
+        $this->menu->line('Reporter email address');
     }
 
     protected function afterRendering(string $argument): void

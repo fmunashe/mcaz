@@ -18,8 +18,8 @@ class Dashboard extends State
     {
         $this->menu->line('Main Menu');
         $this->menu->paginateListing([
-            'Report suspected reaction with a medicine (ADR)',
-            'Report suspected reaction with a vaccine (AEFI)',
+            'Report suspected reaction with a medicine ADR',
+            'Report suspected reaction with a vaccine AEFI',
             'Report suspected quality problem with a medicine/vaccine/glove/condom',
             'Submit a complaint',
             'FAQs',
