@@ -9,6 +9,7 @@ use App\Http\Ussd\States\InvalidMenuSelection;
 use App\Http\Ussd\States\MainDashboard\ADR\ReportAdr;
 use App\Http\Ussd\States\MainDashboard\AEFI\ReportAefi;
 use App\Http\Ussd\States\MainDashboard\QualityProblemReport\ReportQualityProblem;
+use App\Http\Ussd\States\MySubmissions\MySubmissions;
 use Sparors\Ussd\State;
 
 class ContinueWithoutRegistering extends State

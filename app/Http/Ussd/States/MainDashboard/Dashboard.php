@@ -10,6 +10,7 @@ use App\Http\Ussd\States\MainDashboard\AEFI\ReportAefi;
 use App\Http\Ussd\States\MainDashboard\Complaints\CustomerComplaint;
 use App\Http\Ussd\States\MainDashboard\Profile\MyProfile;
 use App\Http\Ussd\States\MainDashboard\QualityProblemReport\ReportQualityProblem;
+use App\Http\Ussd\States\MySubmissions\MySubmissions;
 use Sparors\Ussd\State;
 
 class Dashboard extends State
