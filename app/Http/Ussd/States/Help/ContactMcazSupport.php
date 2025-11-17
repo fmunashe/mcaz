@@ -24,6 +24,10 @@ class ContactMcazSupport extends State
 
     protected function afterRendering(string $argument): void
     {
+        if (empty($argument) || !in_array($argument, [1, 2, 3, 4, 5, 6, 7])) {
+            $this->decision->any(self::class);
+            return;
+        }
         $this->decision->equal('1', LicensingAndEnforcement::class);
         $this->decision->equal('2', EvaluationsAndRegistration::class);
         $this->decision->equal('3', PharmacovigilanceAndClinicalTrials::class);

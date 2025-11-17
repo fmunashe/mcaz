@@ -19,4 +19,9 @@ class ProductDefect extends Model
     {
         return $this->hasMany(ProductDefect::class);
     }
+
+    public function productDefectsFollowupInformation(): HasMany
+    {
+        return $this->hasMany(ProductDefectsFollowupInformation::class);
+    }
 }

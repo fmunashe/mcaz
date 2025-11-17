@@ -39,4 +39,9 @@ class ADR extends Model
     {
         return $this->belongsTo(Gender::class);
     }
+
+    public function adrFollowupInformation(): HasMany
+    {
+        return $this->hasMany(ADRFollowupInformation::class);
+    }
 }
