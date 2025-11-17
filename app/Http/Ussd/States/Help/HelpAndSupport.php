@@ -11,13 +11,13 @@ class HelpAndSupport extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->text('Help / Support');
+        $this->menu->text('Help and Support');
         $this->menu->lineBreak(2);
         $this->menu->paginateListing([
-            'What is Pharmacovigilance?',
-            'What is an ADR/AEFI/ Product defect?',
-            'How to Report ADR/AEFI/Product defect/complaint?',
-            'Contact MCAZ Support (Tel / Email)',
+            'What is Pharmacovigilance',
+            'What is an ADR or AEFI or Product defect',
+            'How to Report ADR or AEFI or Product defect or complaint',
+            'Contact MCAZ Support Tel or Email',
             'Back'], 1, 5, '. ');
     }
 

@@ -17,9 +17,9 @@ class ContinueWithoutRegistering extends State
     {
         $this->menu->line('Guest Menu');
         $this->menu->paginateListing([
-            'Report suspected reaction with a medicine (ADR)',
-            'Report suspected reaction with a vaccine (AEFI)',
-            'Report suspected quality problem with a medicine/vaccine/glove/condom',
+            'Report suspected reaction with a medicine ADR',
+            'Report suspected reaction with a vaccine AEFI',
+            'Report suspected quality problem with a medicine or vaccine or glove or condom',
             'Submit a complaint',
             'FAQs',
             'Make an enquiry',
