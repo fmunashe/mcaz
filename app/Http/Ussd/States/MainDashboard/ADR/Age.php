@@ -4,12 +4,11 @@ namespace App\Http\Ussd\States\MainDashboard\ADR;
 
 use Sparors\Ussd\State;
 
-class ReportAdr extends State
+class Age extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Identities of Reporter, Patient and Institute will remain confidential');
-        $this->menu->line('Patient full name');
+        $this->menu->line('Patient age');
     }
 
     protected function afterRendering(string $argument): void
@@ -17,8 +16,7 @@ class ReportAdr extends State
         if (empty($argument)) {
             $this->decision->any(self::class);
         }
-        $this->record->set('patientName', $argument);
-        $this->decision->any(Dob::class);
-
+        $this->record->set('age', $argument);
+        $this->decision->any(HospitalName::class);
     }
 }

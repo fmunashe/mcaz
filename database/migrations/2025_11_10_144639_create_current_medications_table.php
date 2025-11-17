@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('frequency')->nullable();
             $table->string('date_started')->nullable();
             $table->string('date_stopped')->nullable();
-            $table->enum('suspected_medicine', ['Yes', 'No'])->nullable();
+            $table->enum('suspected_medicine', ['Yes', 'No'])->default('No')->nullable();
             $table->timestamps();
         });
     }

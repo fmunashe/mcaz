@@ -8,7 +8,7 @@ class CongenitalAnomaly extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Congenital Anomaly');
+        $this->menu->line('Is reason for seriousness congenital anomaly');
         $this->menu->paginateListing([
             'Yes',
             'No'

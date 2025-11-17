@@ -8,7 +8,7 @@ class Disability extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Serious disability');
+        $this->menu->line('Is reason for seriousness disabling');
         $this->menu->paginateListing([
             'Yes',
             'No'

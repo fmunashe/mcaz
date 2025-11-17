@@ -8,7 +8,7 @@ class Death extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Serious reason is death');
+        $this->menu->line('Is reason for seriousness death');
         $this->menu->paginateListing([
             'Yes',
             'No'

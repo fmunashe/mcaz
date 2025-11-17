@@ -8,7 +8,7 @@ class LifeThreatening extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Serious life threatening');
+        $this->menu->line('Is reason for seriousness life threatening');
         $this->menu->paginateListing([
             'Yes',
             'No'

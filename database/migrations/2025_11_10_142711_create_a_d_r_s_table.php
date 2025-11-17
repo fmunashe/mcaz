@@ -28,7 +28,9 @@ return new class extends Migration
             $table->string('designation')->nullable();
             $table->string('email_address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('name_and_address_of_institution')->nullable();
+            $table->string('institution_name')->nullable();
+            $table->string('institution_address')->nullable();
+            $table->text('status')->nullable();
             $table->timestamps();
         });
     }

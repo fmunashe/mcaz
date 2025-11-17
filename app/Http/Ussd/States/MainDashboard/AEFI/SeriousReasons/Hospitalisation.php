@@ -8,7 +8,7 @@ class Hospitalisation extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Hospitalization');
+        $this->menu->line('Is reason for seriousness hospitalization');
         $this->menu->paginateListing([
             'Yes',
             'No'

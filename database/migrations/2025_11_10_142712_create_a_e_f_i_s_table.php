@@ -16,6 +16,7 @@ return new class extends Migration {
     {
         Schema::create('a_e_f_i_s', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('mcaz_reference_number')->nullable();
             $table->string('patient_name')->nullable();
             $table->string('patient_full_address')->nullable();
             $table->string('telephone')->nullable();
@@ -42,6 +43,7 @@ return new class extends Migration {
             $table->string('date_report_received_at_national_level')->nullable();
             $table->string('aefi_worldwide_unique_id')->nullable();
             $table->text('comments')->nullable();
+            $table->text('status')->nullable();
             $table->timestamps();
         });
     }

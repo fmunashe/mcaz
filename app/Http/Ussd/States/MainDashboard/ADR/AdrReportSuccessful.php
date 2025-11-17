@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Ussd\States\MainDashboard\AEFI;
+namespace App\Http\Ussd\States\MainDashboard\ADR;
 
 use App\Http\Ussd\States\ExitState;
 use App\Http\Ussd\States\GuestMenu\ContinueWithoutRegistering;
 use App\Http\Ussd\States\MainDashboard\Dashboard;
 use Sparors\Ussd\State;
 
-class AEFIReportSuccessful extends State
+class AdrReportSuccessful extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('AEFI record submitted successfully');
-        $this->menu->line('Reference Number is ' . $this->record->get('aefiReference'));
+        $this->menu->line('ADR report submitted successfully');
+        $this->menu->line('Reference Number is ' . $this->record->get('adrReference'));
         $this->menu->paginateListing([
             'Main Dashboard',
-            'Report another AEFI',
+            'Submit another ADR',
             'Exit'
         ], 1, 3, '. ');
     }
@@ -24,11 +24,11 @@ class AEFIReportSuccessful extends State
     {
         if ($this->record->get('isLoggedIn')) {
             $this->decision->equal('1', Dashboard::class);
-            $this->decision->equal('2', ReportAefi::class);
+            $this->decision->equal('2', ReportAdr::class);
             $this->decision->equal('3', ExitState::class);
         } else {
             $this->decision->equal('1', ContinueWithoutRegistering::class);
-            $this->decision->equal('2', ReportAefi::class);
+            $this->decision->equal('2', ReportAdr::class);
             $this->decision->equal('3', ExitState::class);
         }
     }

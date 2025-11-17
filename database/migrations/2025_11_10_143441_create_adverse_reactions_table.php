@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(ADR::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('onset_date')->nullable();
             $table->foreignIdFor(Duration::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->string('duration')->nullable();
             $table->text('description')->nullable();
             $table->enum('serious',['Yes','No'])->default('No');
             $table->foreignIdFor(ADRSeriousReason::class)->nullable()->constrained()->cascadeOnDelete();
