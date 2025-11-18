@@ -39,8 +39,7 @@ class Dashboard extends State
         $this->decision->equal('3', ReportQualityProblem::class);
         $this->decision->equal('4', CustomerComplaint::class);
         $this->decision->in(['5','6', '10'], HelpAndSupport::class);
-        $this->decision->equal('7', MySubmissions::class);
-        $this->decision->equal('8', Notifications::class);
+        $this->decision->equal(['7','8'], MySubmissions::class);
         $this->decision->equal('9', MyProfile::class);
         $this->decision->equal('11', ExitState::class);
         $this->decision->any(InvalidMenuSelection::class);
