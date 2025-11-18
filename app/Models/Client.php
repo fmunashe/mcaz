@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
@@ -25,5 +26,25 @@ class Client extends Model
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function customerComplaints(): HasMany
+    {
+        return $this->hasMany(CustomerComplaint::class);
+    }
+
+    public function aefis(): HasMany
+    {
+        return $this->hasMany(Aefi::class);
+    }
+
+    public function adrs(): HasMany
+    {
+        return $this->hasMany(ADR::class);
+    }
+
+    public function productDefects(): HasMany
+    {
+        return $this->hasMany(ProductDefect::class);
     }
 }

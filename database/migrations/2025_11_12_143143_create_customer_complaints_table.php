@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Client;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('customer_complaints', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignIdFor(Client::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('complaint_number')->nullable();
             $table->string('name')->nullable();
             $table->string('address')->nullable();

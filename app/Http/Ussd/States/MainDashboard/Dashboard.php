@@ -38,8 +38,7 @@ class Dashboard extends State
         $this->decision->equal('2', ReportAefi::class);
         $this->decision->equal('3', ReportQualityProblem::class);
         $this->decision->equal('4', CustomerComplaint::class);
-        $this->decision->in(['5', '10'], HelpAndSupport::class);
-        $this->decision->equal('6', MakeEnquiry::class);
+        $this->decision->in(['5','6', '10'], HelpAndSupport::class);
         $this->decision->equal('7', MySubmissions::class);
         $this->decision->equal('8', Notifications::class);
         $this->decision->equal('9', MyProfile::class);

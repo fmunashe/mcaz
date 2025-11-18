@@ -40,4 +40,9 @@ class AEFI extends Model
     {
         return $this->hasMany(AEFIFollowupInformation::class);
     }
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

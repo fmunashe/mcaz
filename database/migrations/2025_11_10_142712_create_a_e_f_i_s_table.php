@@ -2,6 +2,7 @@
 
 use App\Models\ADROutcome;
 use App\Models\AgeGroup;
+use App\Models\Client;
 use App\Models\Gender;
 use App\Models\RelevantMedicalHistory;
 use Illuminate\Database\Migrations\Migration;
@@ -16,6 +17,7 @@ return new class extends Migration {
     {
         Schema::create('a_e_f_i_s', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignIdFor(Client::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('mcaz_reference_number')->nullable();
             $table->string('patient_name')->nullable();
             $table->string('patient_full_address')->nullable();

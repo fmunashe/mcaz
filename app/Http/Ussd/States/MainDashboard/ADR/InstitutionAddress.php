@@ -4,6 +4,7 @@ namespace App\Http\Ussd\States\MainDashboard\ADR;
 
 use App\Models\ADR;
 use App\Models\AdverseReaction;
+use App\Models\Client;
 use App\Models\CurrentMedication;
 use App\Models\RelevantMedicalHistory;
 use App\Models\RelevantPastDrugTherapy;
@@ -50,10 +51,14 @@ class InstitutionAddress extends State
         $reporterPhoneNumber = $this->record->get('reporterPhoneNumber');
         $institutionName = $this->record->get('institutionName');
         $institutionAddress = $this->record->get('institutionAddress');
-
+        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        if ($client){
+            $this->record->set('clientId', $client->id);
+        }
 
 
         $adr = ADR::create([
+            'client_id' => $this->record->get('clientId'),
             'mcaz_reference_number' => $reference,
             'patient_initials' => $patientName,
             'dob' => $patientDob,

@@ -7,6 +7,7 @@ use App\Models\AdverseEvent;
 use App\Models\AEFI;
 use App\Models\AEFIAdverseEvent;
 use App\Models\AEFISeverity;
+use App\Models\Client;
 use App\Models\RelevantMedicalHistory;
 use App\Models\Vaccine;
 use App\OTPGeneration;
@@ -15,6 +16,7 @@ use Sparors\Ussd\State;
 class Comments extends State
 {
     use OTPGeneration;
+
     protected function beforeRendering(): void
     {
         $this->menu->line('Comments');
@@ -54,9 +56,15 @@ class Comments extends State
         $dateInvestigationPlanned = $this->record->get('dateInvestigationPlanned');
         $comments = $this->record->get('comments');
         $reference = $this->generateReferenceNumber();
-        $this->record->set('aefiReference',$reference);
+        $this->record->set('aefiReference', $reference);
+
+        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        if ($client) {
+            $this->record->set('clientId', $client->id);
+        }
 
         $aefi = Aefi::create([
+            'client_id' => $this->record->get('clientId'),
             'mcaz_reference_number' => $reference,
             'patient_name' => $patientName,
             'patient_full_address' => $patientAddress,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Ussd\States\MainDashboard\Complaints;
 
+use App\Models\Client;
 use App\OTPGeneration;
 use App\UssdLoggedInUser;
 use Sparors\Ussd\State;
@@ -38,8 +39,13 @@ class ContactDetailsForThePersonToBeInvestigated extends State
         $contactDetails = $this->record->get('contactDetailsForThePersonToBeInvestigated');
 
         $this->record->set('complaintReference', $reference);
+        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        if ($client) {
+            $this->record->set('clientId', $client->id);
+        }
 
         return \App\Models\CustomerComplaint::create([
+            'client_id'=>$this->record->get('clientId'),
             'complaint_number' => $reference,
             'name' => $user->full_name,
             'address' => $address,

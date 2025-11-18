@@ -44,4 +44,9 @@ class ADR extends Model
     {
         return $this->hasMany(ADRFollowupInformation::class);
     }
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
 }
