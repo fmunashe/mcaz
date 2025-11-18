@@ -12,7 +12,7 @@ class AdrFollowupInformationFail extends State
         $this->menu->paginateListing([
             'Try again',
             'Back',
-        ], 1, 1, '. ');
+        ], 1, 2, '. ');
     }
 
     protected function afterRendering(string $argument): void

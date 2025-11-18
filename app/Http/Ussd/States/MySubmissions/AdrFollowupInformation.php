@@ -23,7 +23,7 @@ class AdrFollowupInformation extends State
         $adr= ADR::query()->where('mcaz_reference_number', $this->record->get('adrFollowupReference'))->first();
 
         if ($adr) {
-            ADRFollowupInformation::create([
+            \App\Models\ADRFollowupInformation::create([
                 'a_d_r_id' => $adr->id,
                 'followup_information' => $this->record->get('adrFollowupInformation'),
             ]);
