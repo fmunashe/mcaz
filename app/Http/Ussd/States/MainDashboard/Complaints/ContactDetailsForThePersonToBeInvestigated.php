@@ -39,13 +39,9 @@ class ContactDetailsForThePersonToBeInvestigated extends State
         $contactDetails = $this->record->get('contactDetailsForThePersonToBeInvestigated');
 
         $this->record->set('complaintReference', $reference);
-        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
-        if ($client) {
-            $this->record->set('clientId', $client->id);
-        }
 
         return \App\Models\CustomerComplaint::create([
-            'client_id'=>$this->record->get('clientId'),
+            'client_id'=>$user->id,
             'complaint_number' => $reference,
             'name' => $user->full_name,
             'address' => $address,

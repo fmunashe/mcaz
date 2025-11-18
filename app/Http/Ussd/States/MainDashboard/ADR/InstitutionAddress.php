@@ -9,11 +9,13 @@ use App\Models\CurrentMedication;
 use App\Models\RelevantMedicalHistory;
 use App\Models\RelevantPastDrugTherapy;
 use App\OTPGeneration;
+use App\UssdLoggedInUser;
 use Sparors\Ussd\State;
 
 class InstitutionAddress extends State
 {
     use OTPGeneration;
+    use UssdLoggedInUser;
 
     protected function beforeRendering(): void
     {
@@ -51,7 +53,7 @@ class InstitutionAddress extends State
         $reporterPhoneNumber = $this->record->get('reporterPhoneNumber');
         $institutionName = $this->record->get('institutionName');
         $institutionAddress = $this->record->get('institutionAddress');
-        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        $client = $this->getUserByPhone($this->record->get('phoneNumber'));
         if ($client){
             $this->record->set('clientId', $client->id);
         }

@@ -3,14 +3,15 @@
 namespace App\Http\Ussd\States\MainDashboard\QualityProblemReport;
 
 use App\Http\Ussd\States\MainDashboard\QualityProblemReport\Defects\PresenceOfForeignMaterial;
-use App\Models\Client;
 use App\Models\ProductDefect;
 use App\OTPGeneration;
+use App\UssdLoggedInUser;
 use Sparors\Ussd\State;
 
 class ReporterSignature extends State
 {
     use OTPGeneration;
+    use UssdLoggedInUser;
 
     protected function beforeRendering(): void
     {
@@ -45,13 +46,13 @@ class ReporterSignature extends State
         $dateProblemObserved = $this->record->get('dateProblemObserved');
         $productAvailableForExamination = $this->record->get('productAvailableForExamination');
         $reporterSignature = $this->record->get('reporterSignature');
-        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        $client = $this->getUserByPhone($this->record->get('phoneNumber'))->first();
         if ($client) {
             $this->record->set('clientId', $client->id);
         }
 
         ProductDefect::create([
-            'client_id'=>$this->record->get('clientId'),
+            'client_id' => $this->record->get('clientId'),
             'report_number' => $referenceNumber,
             'product_name' => $productName,
             'description' => $descriptionOfDevice,

@@ -11,11 +11,13 @@ use App\Models\Client;
 use App\Models\RelevantMedicalHistory;
 use App\Models\Vaccine;
 use App\OTPGeneration;
+use App\UssdLoggedInUser;
 use Sparors\Ussd\State;
 
 class Comments extends State
 {
     use OTPGeneration;
+    use UssdLoggedInUser;
 
     protected function beforeRendering(): void
     {
@@ -58,7 +60,7 @@ class Comments extends State
         $reference = $this->generateReferenceNumber();
         $this->record->set('aefiReference', $reference);
 
-        $client = Client::where('phone', $this->record->get('phoneNumber'))->first();
+        $client = $this->getUserByPhone($this->record->get('phoneNumber'));
         if ($client) {
             $this->record->set('clientId', $client->id);
         }
