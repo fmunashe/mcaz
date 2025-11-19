@@ -6,30 +6,28 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Permission extends Model
 {
-    /** @use HasFactory<\Database\Factories\RoleFactory> */
+    /** @use HasFactory<\Database\Factories\PermissionFactory> */
     use HasFactory;
     use SoftDeletes;
 
-    public $table = 'roles';
+    public $table = 'permissions';
 
     public $orderable = [
         'id',
-        'name',
+        'title',
     ];
 
     public $filterable = [
         'id',
-        'name',
-        'permissions.title',
+        'title',
     ];
 
     protected $fillable = [
-        'name',
+        'title',
     ];
 
     protected $dates = [
@@ -38,23 +36,13 @@ class Role extends Model
         'deleted_at',
     ];
 
-    public function permissions(): BelongsToMany
-    {
-        return $this->belongsToMany(Permission::class);
-    }
-
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function users(): BelongsToMany
+    public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
-    }
-
-    public function clients(): HasMany
-    {
-        return $this->hasMany(Client::class);
+        return $this->belongsToMany(Role::class);
     }
 }
