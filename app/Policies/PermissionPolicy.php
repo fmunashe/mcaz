@@ -13,7 +13,9 @@ class PermissionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class PermissionPolicy
      */
     public function view(User $user, Permission $permission): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_access');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class PermissionPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class PermissionPolicy
      */
     public function update(User $user, Permission $permission): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class PermissionPolicy
      */
     public function delete(User $user, Permission $permission): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class PermissionPolicy
      */
     public function restore(User $user, Permission $permission): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class PermissionPolicy
      */
     public function forceDelete(User $user, Permission $permission): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'user_management_delete');
+        })->exists();
     }
 }

@@ -33,7 +33,12 @@ class PermissionSeeder extends Seeder
             ['id' => 18, 'title' => 'customer_complaints_create'],
             ['id' => 19, 'title' => 'customer_complaints_access'],
             ['id' => 20, 'title' => 'customer_complaints_edit'],
-            ['id' => 21, 'title' => 'customer_complaints_delete']
+            ['id' => 21, 'title' => 'customer_complaints_delete'],
+            ['id' => 22, 'title' => 'client_access'],
+            ['id' => 23, 'title' => 'client_edit'],
+            ['id' => 24, 'title' => 'client_delete'],
+            ['id' => 25, 'title' => 'client_create'],
+            ['id' => 26, 'title' => 'client_show']
         ];
 
         Permission::insert($permissions);

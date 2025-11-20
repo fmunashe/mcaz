@@ -8,11 +8,12 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Support\Enums\MaxWidth;
+use Filament\Support\Enums\Width;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -69,10 +70,46 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-//            ->sidebarFullyCollapsibleOnDesktop()
+            ->sidebarFullyCollapsibleOnDesktop()
             ->brandLogo(asset('logo.svg'))
             ->brandLogoHeight("50px")
-            ->favicon(asset('logo.svg'));
-//            ->maxContentWidth(MaxWidth::Full);
+            ->favicon(asset('logo.svg'))
+            ->maxContentWidth(Width::Full)
+        ->navigationGroups([
+        NavigationGroup::make()
+            ->label('Households')
+            ->icon('heroicon-o-user-group'),
+        NavigationGroup::make()
+            ->label('Medical Dashboard')
+            ->icon('heroicon-s-plus'),
+        NavigationGroup::make()
+            ->label('Assessments')
+            ->icon('heroicon-o-book-open'),
+
+        NavigationGroup::make()
+            ->label('Forms')
+            ->icon('heroicon-o-pencil'),
+        NavigationGroup::make()
+            ->label('Services')
+            ->icon('heroicon-o-sun'),
+        NavigationGroup::make()
+            ->label('Commodity Dashboard')
+            ->icon('heroicon-o-truck'),
+        NavigationGroup::make()
+            ->label('Call Centre')
+            ->icon('heroicon-o-phone'),
+        NavigationGroup::make()
+            ->label('User Management')
+            ->icon('heroicon-o-user-group'),
+//            ->icon('heroicon-o-key'),
+        NavigationGroup::make()
+            ->label('Config Lists')
+            ->icon('heroicon-o-cog-6-tooth'),
+
+        NavigationGroup::make()
+            ->label(fn(): string => __('navigation.settings'))
+            ->icon('heroicon-o-cog-6-tooth')
+            ->collapsed(),
+    ]);
     }
 }
