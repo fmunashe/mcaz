@@ -40,4 +40,6 @@ Route::prefix('v1/')->group(function () {
 
 Route::prefix('v1/')->group(function () {
     Route::post('mcaz/ussd/whatsapp/live', [WhatsappBotController::class, 'process'])->name("mcazWhatsappMenuProcessor");
+//    Route::post('mcaz/ussd/whatsapp/live/webhooks/messages', [WhatsappBotController::class, 'process'])->name("mcazWhatsappMenuProcessor");
+    Route::get('mcaz/ussd/whatsapp/live', [WhatsappBotController::class, 'verify'])->name("verify");
 });

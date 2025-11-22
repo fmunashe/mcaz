@@ -16,9 +16,9 @@ class ProductDefect extends Model
 
     protected $guarded = [];
 
-    public function defects(): HasMany
+    public function natureOfDefects(): HasMany
     {
-        return $this->hasMany(ProductDefect::class);
+        return $this->hasMany(NatureOfDefect::class, 'product_defect_id');
     }
 
     public function productDefectsFollowupInformation(): HasMany

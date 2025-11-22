@@ -13,7 +13,9 @@ class ProductDefectPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class ProductDefectPolicy
      */
     public function view(User $user, ProductDefect $productDefect): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_access');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class ProductDefectPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class ProductDefectPolicy
      */
     public function update(User $user, ProductDefect $productDefect): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class ProductDefectPolicy
      */
     public function delete(User $user, ProductDefect $productDefect): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class ProductDefectPolicy
      */
     public function restore(User $user, ProductDefect $productDefect): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class ProductDefectPolicy
      */
     public function forceDelete(User $user, ProductDefect $productDefect): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'product_defect_delete');
+        })->exists();
     }
 }

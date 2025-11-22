@@ -13,7 +13,9 @@ class AEFIPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class AEFIPolicy
      */
     public function view(User $user, AEFI $aEFI): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_access');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class AEFIPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class AEFIPolicy
      */
     public function update(User $user, AEFI $aEFI): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class AEFIPolicy
      */
     public function delete(User $user, AEFI $aEFI): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class AEFIPolicy
      */
     public function restore(User $user, AEFI $aEFI): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class AEFIPolicy
      */
     public function forceDelete(User $user, AEFI $aEFI): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'aefi_delete');
+        })->exists();
     }
 }

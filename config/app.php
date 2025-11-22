@@ -122,5 +122,10 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    'whatsapp' => [
+        'FACEBOOK_ACCESS_TOKEN' => env('FACEBOOK_ACCESS_TOKEN'),
+        'FACEBOOK_PHONE_NUMBER_ID' => env('FACEBOOK_PHONE_NUMBER_ID'),
+        'FACEBOOK_BASE_URL'=>env('WHATSAPP_BASE_URL'),
+    ],
 
 ];

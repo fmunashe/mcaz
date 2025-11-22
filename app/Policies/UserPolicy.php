@@ -2,11 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\ADR;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ADRPolicy
+class UserPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -14,17 +13,17 @@ class ADRPolicy
     public function viewAny(User $user): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_access');
+            $query->where('title', 'user_management_access');
         })->exists();
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, ADR $aDR): bool
+    public function view(User $user, User $model): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_access');
+            $query->where('title', 'user_management_access');
         })->exists();
     }
 
@@ -34,47 +33,47 @@ class ADRPolicy
     public function create(User $user): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_create');
+            $query->where('title', 'user_management_create');
         })->exists();
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, ADR $aDR): bool
+    public function update(User $user, User $model): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_edit');
+            $query->where('title', 'user_management_edit');
         })->exists();
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, ADR $aDR): bool
+    public function delete(User $user, User $model): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_delete');
+            $query->where('title', 'user_management_delete');
         })->exists();
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, ADR $aDR): bool
+    public function restore(User $user, User $model): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_delete');
+            $query->where('title', 'user_management_delete');
         })->exists();
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, ADR $aDR): bool
+    public function forceDelete(User $user, User $model): bool
     {
         return $user->roles()->whereHas('permissions', function ($query) {
-            $query->where('title', 'adr_delete');
+            $query->where('title', 'user_management_delete');
         })->exists();
     }
 }

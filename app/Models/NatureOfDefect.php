@@ -14,8 +14,13 @@ class NatureOfDefect extends Model
     use HasUuids;
     protected $guarded =[];
 
-    public function product(): BelongsTo
+    public function productDefect(): BelongsTo
     {
-        return $this->belongsTo(ProductDefect::class);
+        return $this->belongsTo(ProductDefect::class, 'product_defect_id');
+    }
+
+    public function defect(): BelongsTo
+    {
+        return $this->belongsTo(Defect::class);
     }
 }
