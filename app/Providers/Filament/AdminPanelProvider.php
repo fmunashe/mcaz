@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->brandName('MCAZ')
             ->defaultThemeMode(ThemeMode::Light)
-            ->topbar(false)
+            ->topbar(true)
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Settings')
