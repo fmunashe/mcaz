@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Ussd\States\Welcome;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Sparors\Ussd\Facades\Ussd;
 
 class WhatsappBotController extends Controller
@@ -14,8 +13,10 @@ class WhatsappBotController extends Controller
     {
         $data = $request->all();
 
-        $message = $data['entry'][0]['changes'][0]['value']['messages'][0];
-
+        $message = "";
+        if (isset($data['entry'][0]['changes'][0]['value']['messages'][0])) {
+            $message = $data['entry'][0]['changes'][0]['value']['messages'][0];
+        }
         $from = $message['from'];          // WhatsApp user number
         $text = $message['text']['body'];  // Message content
         $ussd = Ussd::machine()->set([
@@ -57,7 +58,6 @@ class WhatsappBotController extends Controller
 
     public function verify(Request $request): \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
     {
-        Log::info("== we were here =", $request->all());
         $token = env('FACEBOOK_VERIFY_TOKEN');
 
         if (

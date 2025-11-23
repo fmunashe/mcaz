@@ -17,9 +17,7 @@ class LanguageSelection extends State
                 'English',
                 'Ndebele',
                 'Shona',
-                'Exit'], 1, 5, '. ')
-            ->lineBreak(2)
-            ->line('Main Menu');
+                'Exit'], 1, 5, '. ');
     }
 
     protected function afterRendering(string $argument): void

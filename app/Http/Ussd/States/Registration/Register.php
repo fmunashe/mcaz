@@ -11,10 +11,12 @@ class Register extends State
 {
     protected function beforeRendering(): void
     {
-        $roles = Role::query()->pluck('name')->toArray();
+
+        $roleArray = ['Healthcare Worker', 'Patient', 'Investigator', 'Sponsor', 'Other'];
+        $roles = Role::query()->whereIn('name', $roleArray)->pluck('name')->toArray();
         $roles[] = 'Exit';
         $this->menu->line('Select Role')
-            ->paginateListing($roles, 1, 6, '. ');
+            ->paginateListing($roles, 1, 10, '. ');
     }
 
     protected function afterRendering(string $argument): void
@@ -25,16 +27,16 @@ class Register extends State
             $this->record->set('roleId', $argument);
             switch ($argument) {
                 case '1':
-                    $this->record->set('roleName', 'Patient');
-                    break;
-                case '2':
-                    $this->record->set('roleName', 'Sponsor');
-                    break;
-                case '3':
                     $this->record->set('roleName', 'Healthcare Worker');
                     break;
-                case '4':
+                case '2':
+                    $this->record->set('roleName', 'Patient');
+                    break;
+                case '3':
                     $this->record->set('roleName', 'Investigator');
+                    break;
+                case '4':
+                    $this->record->set('roleName', 'Sponsor');
                     break;
                 case '5':
                     $this->record->set('roleName', 'Other');
