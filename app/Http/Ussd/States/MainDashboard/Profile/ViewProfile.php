@@ -26,6 +26,7 @@ class ViewProfile extends State
         $this->menu->line($language);
         $this->menu->line($role);
         $this->menu->line($terms);
+        $this->menu->lineBreak();
         $this->menu->paginateListing([
             'Back'], 1, 1, '. ');
     }
