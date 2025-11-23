@@ -17,7 +17,7 @@ class ViewProfile extends State
         $username = 'Username: ' . $user->username;
         $language = 'Language: ' . $user->language->name;
         $role = 'Role: ' . $user->role->name;
-        $notify_via = 'Notification Channel: ' . $user->notify_via;
+        $notify_via = 'Notification Channel: ' . ucfirst($user->notify_via);
         $institution = 'Institution: ' . $user->institution;
         $terms = 'Accepted Terms: ' . $terms;
         $this->menu->line('Profile Details');
