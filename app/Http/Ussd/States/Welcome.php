@@ -14,7 +14,7 @@ class Welcome extends State
 
     protected function beforeRendering(): void
     {
-        $this->clearSession($this->record->get('sessionId'));
+//        $this->clearSession($this->record->get('sessionId'));
         $this->menu->line('Welcome to MCAZ')
             ->line("Report medicine or vaccine side effects or product quality issues or submit a complaint or submit an enquiry.")
             ->paginateListing([
