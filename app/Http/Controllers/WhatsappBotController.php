@@ -58,7 +58,7 @@ class WhatsappBotController extends Controller
     public function verify(Request $request): \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
     {
         Log::info("== we were here =", $request->all());
-        $token = env('FACEBOOK_ACCESS_TOKEN');
+        $token = env('FACEBOOK_VERIFY_TOKEN');
 
         if (
             $request->hub_mode === 'subscribe' &&
