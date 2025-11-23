@@ -2,6 +2,7 @@
 
 namespace App\Http\Ussd\States;
 
+use App\ClearSession;
 use App\Http\Ussd\Actions\Registration\CheckRegistration;
 use App\Http\Ussd\States\GuestMenu\ContinueWithoutRegistering;
 use App\Http\Ussd\States\Help\HelpAndSupport;
@@ -9,8 +10,11 @@ use Sparors\Ussd\State;
 
 class Welcome extends State
 {
+    use ClearSession;
+
     protected function beforeRendering(): void
     {
+        $this->clearSession($this->record->get('sessionId'));
         $this->menu->line('Welcome to MCAZ')
             ->line("Report medicine or vaccine side effects or product quality issues or submit a complaint or submit an enquiry.")
             ->paginateListing([
