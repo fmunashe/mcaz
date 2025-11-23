@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Ussd\States\Welcome;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Sparors\Ussd\Facades\Ussd;
 
 class WhatsappBotController extends Controller
@@ -54,8 +55,9 @@ class WhatsappBotController extends Controller
             ]);
     }
 
-    public function verify(Request $request)
+    public function verify(Request $request): \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
     {
+        Log::info("== we were here =", $request->all());
         $token = env('FACEBOOK_ACCESS_TOKEN');
 
         if (
