@@ -10,8 +10,7 @@ class ContactMcazSupport extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->text('Divisions Email Contacts');
-        $this->menu->lineBreak(2);
+        $this->menu->line('Divisions Email Contacts');
         $this->menu->paginateListing([
             'Licensing and Enforcement',
             'Evaluations and Registration',
