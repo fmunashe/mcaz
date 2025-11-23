@@ -17,6 +17,8 @@ class ViewProfile extends State
         $username = 'Username: ' . $user->username;
         $language = 'Language: ' . $user->language->name;
         $role = 'Role: ' . $user->role->name;
+        $notify_via = 'Notification Channel: ' . $user->notify_via;
+        $institution = 'Institution: ' . $user->institution;
         $terms = 'Accepted Terms: ' . $terms;
         $this->menu->line('Profile Details');
         $this->menu->line($name);
@@ -25,6 +27,8 @@ class ViewProfile extends State
         $this->menu->line($username);
         $this->menu->line($language);
         $this->menu->line($role);
+        $this->menu->line($notify_via);
+        $this->menu->line($institution);
         $this->menu->line($terms);
         $this->menu->lineBreak();
         $this->menu->paginateListing([
