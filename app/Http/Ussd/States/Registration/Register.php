@@ -13,7 +13,7 @@ class Register extends State
     {
         $roles = Role::query()->pluck('name')->toArray();
         $roles[] = 'Exit';
-        $this->menu->text('Select Role')
+        $this->menu->line('Select Role')
             ->paginateListing($roles, 1, 6, '. ');
     }
 
