@@ -3,6 +3,7 @@
 namespace App\Http\Ussd\States\MainDashboard\Profile;
 
 use App\Models\Client;
+use Illuminate\Support\Str;
 use Sparors\Ussd\State;
 
 class ViewProfile extends State
@@ -10,7 +11,7 @@ class ViewProfile extends State
     protected function beforeRendering(): void
     {
         $user = Client::query()->where('phone', $this->record->get('phoneNumber'))->first();
-        $via = $user->notify_via == "sms" ? ucwords($user->notify_via) : ucfirst($user->notify_via);
+        $via = $user->notify_via == "sms" ? Str::upper($user->notify_via) : ucfirst($user->notify_via);
         $terms = $user->accepted_terms ? 'Yes' : 'No';
         $name = 'Name: ' . $user->full_name;
         $phone = 'Phone: ' . $user->phone;
