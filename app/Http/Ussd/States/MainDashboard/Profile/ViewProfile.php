@@ -11,15 +11,21 @@ class ViewProfile extends State
     {
         $user = Client::query()->where('phone', $this->record->get('phoneNumber'))->first();
         $terms = $user->accepted_terms ? 'Yes' : 'No';
-        $profileString = 'Name: ' . $user->full_name . '\n' .
-            'Phone: ' . $user->phone . '\n' .
-            'Email: ' . $user->email . '\n' .
-            'Username: ' . $user->username . '\n' .
-            'Language: ' . $user->language->name . '\n' .
-            'Role: ' . $user->role->name . '\n' .
-            'Accepted Terms: ' . $terms;
+        $name = 'Name: ' . $user->full_name;
+        $phone = 'Phone: ' . $user->phone;
+        $email = 'Email: ' . $user->email;
+        $username = 'Username: ' . $user->username;
+        $language = 'Language: ' . $user->language->name;
+        $role = 'Role: ' . $user->role->name;
+        $terms = 'Accepted Terms: ' . $terms;
         $this->menu->line('Profile Details');
-        $this->menu->line($profileString);
+        $this->menu->line($name);
+        $this->menu->line($phone);
+        $this->menu->line($email);
+        $this->menu->line($username);
+        $this->menu->line($language);
+        $this->menu->line($role);
+        $this->menu->line($terms);
         $this->menu->paginateListing([
             'Back'], 1, 1, '. ');
     }
