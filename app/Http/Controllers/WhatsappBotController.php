@@ -19,13 +19,14 @@ class WhatsappBotController extends Controller
         if (isset($data['entry'][0]['changes'][0]['value']['messages'][0])) {
             $message = $data['entry'][0]['changes'][0]['value']['messages'][0];
             $messageId = $request['entry'][0]['changes'][0]['value']['messages'][0]['id'];
-            $messageArray = ['hi', 'hie'];
-            if (in_array($message, $messageArray)) {
+            $from = $message['from'];          // WhatsApp user number
+            $text = $message['text']['body'];
+            $messageArray = ['hi', 'hie','Hi','Hie'];
+            if (in_array($text, $messageArray)) {
                 $this->clearSession($message['from']);
             }
 
-            $from = $message['from'];          // WhatsApp user number
-            $text = $message['text']['body'];  // Message content
+            // Message content
             $ussd = Ussd::machine()->set([
                 'phone_number' => $from,
                 'session_id' => $from,
