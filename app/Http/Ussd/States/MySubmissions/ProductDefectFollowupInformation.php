@@ -10,7 +10,7 @@ class ProductDefectFollowupInformation extends State
     protected function beforeRendering(): void
     {
 
-        $this->menu->line('Enter the followup information for the product defect with reference ' . $this->record->get('productDefectFollowupReference'));
+        $this->menu->line('Enter the followup information for the product defect with reference ' . $this->record->get('productDefectReference'));
 
     }
 
