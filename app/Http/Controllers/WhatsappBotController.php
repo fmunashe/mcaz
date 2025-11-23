@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Ussd\States\Welcome;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Sparors\Ussd\Facades\Ussd;
 
 class WhatsappBotController extends Controller
@@ -30,6 +31,27 @@ class WhatsappBotController extends Controller
             });
 
         return $ussd->run();
+    }
+
+
+    private function sendMessage($message, $recipient): void
+    {
+        $url = env('FACEBOOK_BASE_URL');
+        $token = env('FACEBOOK_ACCESS_TOKEN');
+
+        Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json',
+        ])
+            ->post($url, [
+                'messaging_product' => 'whatsapp',
+                'to' => $recipient,
+                'type' => 'text',
+                'text' => [
+                    'preview_url' => true,
+                    'body' => $message,
+                ],
+            ]);
     }
 
     public function verify(Request $request)
