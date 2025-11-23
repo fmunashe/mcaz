@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ClearSession;
 use App\Http\Ussd\States\Welcome;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -9,15 +10,19 @@ use Sparors\Ussd\Facades\Ussd;
 
 class WhatsappBotController extends Controller
 {
+    use ClearSession;
+
     public function process(Request $request)
     {
         $data = $request->all();
 
-        $message = "";
-        $messageId = "";
         if (isset($data['entry'][0]['changes'][0]['value']['messages'][0])) {
             $message = $data['entry'][0]['changes'][0]['value']['messages'][0];
             $messageId = $request['entry'][0]['changes'][0]['value']['messages'][0]['id'];
+            $messageArray = ['hi', 'hie'];
+            if (in_array($message, $messageArray)) {
+                $this->clearSession($message['from']);
+            }
 
             $from = $message['from'];          // WhatsApp user number
             $text = $message['text']['body'];  // Message content
