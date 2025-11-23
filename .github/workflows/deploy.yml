@@ -49,4 +49,4 @@ jobs:
             git pull origin main
             composer update --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate:fresh --seed
-            php artisan optimize
+            php artisan optimize:clear
