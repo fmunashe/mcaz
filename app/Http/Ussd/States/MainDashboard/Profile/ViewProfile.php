@@ -10,6 +10,7 @@ class ViewProfile extends State
     protected function beforeRendering(): void
     {
         $user = Client::query()->where('phone', $this->record->get('phoneNumber'))->first();
+        $via = $user->notify_via == "sms" ? ucwords($user->notify_via) : ucfirst($user->notify_via);
         $terms = $user->accepted_terms ? 'Yes' : 'No';
         $name = 'Name: ' . $user->full_name;
         $phone = 'Phone: ' . $user->phone;
@@ -17,7 +18,7 @@ class ViewProfile extends State
         $username = 'Username: ' . $user->username;
         $language = 'Language: ' . $user->language->name;
         $role = 'Role: ' . $user->role->name;
-        $notify_via = 'Notification Channel: ' . ucfirst($user->notify_via);
+        $notify_via = 'Notification Channel: ' . $via;
         $institution = 'Institution: ' . $user->institution;
         $terms = 'Accepted Terms: ' . $terms;
         $this->menu->line('Profile Details');
