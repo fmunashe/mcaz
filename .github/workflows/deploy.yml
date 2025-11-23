@@ -48,5 +48,5 @@ jobs:
             cd /home/u91610/domains/mcaz.trixaltech.com/mcaz
             git pull origin main
             composer update --no-interaction --prefer-dist --optimize-autoloader
-            php artisan migrate:fresh --seed
+            php artisan migrate
             php artisan optimize:clear
