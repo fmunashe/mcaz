@@ -21,7 +21,7 @@ class WhatsappBotController extends Controller
             $messageId = $request['entry'][0]['changes'][0]['value']['messages'][0]['id'];
             $from = $message['from'];          // WhatsApp user number
             $text = $message['text']['body'];
-            $messageArray = ['hi', 'hie','Hi','Hie'];
+            $messageArray = ['hi', 'hie','Hi','Hie','exit','Exit','quit','Quit','restart','restart'];
             if (in_array($text, $messageArray)) {
                 $this->clearSession($message['from']);
             }
