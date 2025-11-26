@@ -19,7 +19,6 @@ class ADROutcomeSeeder extends Seeder
             ['id' => Str::uuid(), 'outcome' => 'Recovering/resolving'],
             ['id' => Str::uuid(), 'outcome' => 'Recovered/resolved with sequelae'],
             ['id' => Str::uuid(), 'outcome' => 'Not recovered/not resolved'],
-            ['id' => Str::uuid(), 'outcome' => 'Fatal'],
             ['id' => Str::uuid(), 'outcome' => 'Unknown'],
             ['id' => Str::uuid(), 'outcome' => 'Died']
         ];

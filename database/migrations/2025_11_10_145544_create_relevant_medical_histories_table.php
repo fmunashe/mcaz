@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->uuid('id')->primary();
             $table->foreignIdFor(ADR::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(AEFI::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->longText('relevant_medical_history')->nullable();
             $table->text('lab_test_results')->nullable();
             $table->foreignIdFor(ActionTaken::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(ADROutcome::class)->nullable()->constrained()->cascadeOnDelete();

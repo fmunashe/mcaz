@@ -8,7 +8,7 @@ class Frequency extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Enter frequency '.$this->record->get('medicationCount').' of current medication dose');
+        $this->menu->line('Enter dose frequency '.$this->record->get('medicationCount').' e.g 2 tablets 50mg, 3 times a day');
     }
 
     protected function afterRendering(string $argument): void
@@ -19,6 +19,6 @@ class Frequency extends State
         }
         $currentCount = $this->record->get('medicationCount');
         $this->record->set('frequency'.$currentCount, $argument);
-        $this->decision->any(DateStarted::class);
+        $this->decision->any(MethodOfAdministration::class);
     }
 }

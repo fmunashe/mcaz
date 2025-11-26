@@ -8,7 +8,7 @@ class BrandName extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Enter brand name '.$this->record->get('medicationCount').' of current medication');
+        $this->menu->line('Brand name or generic name '.$this->record->get('medicationCount').' of current medication');
     }
 
     protected function afterRendering(string $argument): void

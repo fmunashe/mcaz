@@ -15,8 +15,7 @@ class Gender extends State
         $this->menu->line('Gender');
         $this->menu->paginateListing([
             'Male',
-            'Female',
-            'Other'
+            'Female'
         ], 1, 4, '. ');
     }
 
@@ -27,13 +26,8 @@ class Gender extends State
             $this->record->set('genderId', $gender->id);
             $this->record->set('gender', $gender->gender);
             $this->decision->any(CheckGender::class);
-        } elseif ($argument == '2') {
+        } else {
             $gender = $this->getGenderByName('female');
-            $this->record->set('genderId', $gender->id);
-            $this->record->set('gender', $gender->gender);
-            $this->decision->any(CheckGender::class);
-        } elseif ($argument == '3') {
-            $gender = $this->getGenderByName('other');
             $this->record->set('genderId', $gender->id);
             $this->record->set('gender', $gender->gender);
             $this->decision->any(CheckGender::class);

@@ -13,22 +13,20 @@ class Gender extends State
         $this->menu->line('Patient Gender');
         $this->menu->paginateListing([
             'Male',
-            'Female',
-            'Other'
-        ], 1, 3, '. ');
+            'Female'
+        ], 1, 2, '. ');
     }
 
     protected function afterRendering(string $argument): void
     {
-        if (empty($argument) || !in_array($argument, [1, 2, 3])) {
+        if (empty($argument) || !in_array($argument, [1, 2])) {
             $this->decision->any(self::class);
+            return;
         }
         if ($argument == 1) {
             $gender = $this->getGenderByName(Str::lower('Male'));
-        } elseif ($argument == 2) {
+        } else {
             $gender = $this->getGenderByName(Str::lower('Female'));
-        } elseif ($argument == 3) {
-            $gender = $this->getGenderByName(Str::lower('Other'));
         }
         $this->record->set('genderId', $gender->id);
         $this->decision->any(DateOfOnset::class);

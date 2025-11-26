@@ -8,7 +8,7 @@ class LabTestResult extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Past medical history lab test results');
+        $this->menu->line('Laboratory  test results');
     }
 
     protected function afterRendering(string $argument): void

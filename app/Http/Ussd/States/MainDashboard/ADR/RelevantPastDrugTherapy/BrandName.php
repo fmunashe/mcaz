@@ -8,7 +8,7 @@ class BrandName extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Enter brand name of drug therapy');
+        $this->menu->line('Brand name or generic name of drug therapy');
     }
 
     protected function afterRendering(string $argument): void

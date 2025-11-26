@@ -8,7 +8,7 @@ class ActionTaken extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Past medical history action taken');
+        $this->menu->line('Action taken');
         $this->menu->paginateListing([
             'Dose increased',
             'Dose reduced',

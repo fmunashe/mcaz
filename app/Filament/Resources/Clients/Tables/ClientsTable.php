@@ -19,9 +19,6 @@ class ClientsTable
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
                 TextColumn::make('full_name')
                     ->searchable(),
                 TextColumn::make('email')
@@ -31,13 +28,9 @@ class ClientsTable
                     ->searchable(),
                 TextColumn::make('username')
                     ->searchable(),
-                TextColumn::make('pin')
-                    ->searchable(),
                 TextColumn::make('language.name')
                     ->searchable(),
                 TextColumn::make('role.name')
-                    ->searchable(),
-                TextColumn::make('otp')
                     ->searchable(),
                 IconColumn::make('accepted_terms')
                     ->boolean(),

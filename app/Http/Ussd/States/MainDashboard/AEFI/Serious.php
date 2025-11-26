@@ -10,7 +10,7 @@ class Serious extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Severity or Serious');
+        $this->menu->line('Serious');
         $this->menu->paginateListing([
             'Yes',
             'No'

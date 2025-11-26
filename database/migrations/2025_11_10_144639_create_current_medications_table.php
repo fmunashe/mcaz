@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('batch_number')->nullable();
             $table->string('dose')->nullable();
             $table->string('frequency')->nullable();
+            $table->text('medication_administration_method')->nullable();
             $table->string('date_started')->nullable();
             $table->string('date_stopped')->nullable();
             $table->enum('suspected_medicine', ['Yes', 'No'])->default('No')->nullable();

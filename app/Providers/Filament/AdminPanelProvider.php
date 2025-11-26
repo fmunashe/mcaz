@@ -72,9 +72,9 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
-            ->brandLogo(asset('logo.svg'))
+            ->brandLogo(asset('logo.png'))
             ->brandLogoHeight("50px")
-            ->favicon(asset('logo.svg'))
+            ->favicon(asset('logo.png'))
             ->maxContentWidth(Width::Full)
         ->navigationGroups([
         NavigationGroup::make()

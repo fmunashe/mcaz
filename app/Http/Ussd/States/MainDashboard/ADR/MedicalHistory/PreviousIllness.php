@@ -2,13 +2,14 @@
 
 namespace App\Http\Ussd\States\MainDashboard\ADR\MedicalHistory;
 
+use App\Http\Ussd\States\MainDashboard\ADR\ReporterFullName;
 use Sparors\Ussd\State;
 
-class LabTestResults extends State
+class PreviousIllness extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Laboratory test results');
+        $this->menu->line('Previous illness if any');
     }
 
     protected function afterRendering(string $argument): void
@@ -17,7 +18,7 @@ class LabTestResults extends State
             $this->decision->any(self::class);
             return;
         }
-        $this->record->set('AdrLabTestResults', $argument);
-        $this->decision->any(ActionTaken::class);
+        $this->record->set('adrPreviousIllness', $argument);
+        $this->decision->any(ReporterFullName::class);
     }
 }

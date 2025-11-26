@@ -8,7 +8,7 @@ class DateProblemObserved extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Date problem observed');
+        $this->menu->line('Date Problem Occurred or Observed');
     }
 
     protected function afterRendering(string $argument): void

@@ -17,7 +17,6 @@ class Outcome extends State
             'Recovering or resolving',
             'Recovered or resolved with sequelae',
             'Not recovered or not resolved',
-            'Fatal',
             'Unknown',
             'Died'
         ], 1, 8, '. ');
@@ -25,9 +24,9 @@ class Outcome extends State
 
     protected function afterRendering(string $argument): void
     {
-        if (in_array($argument, [1, 2, 3, 4, 5, 6, 7])) {
+        if (in_array($argument, [1, 2, 3, 4, 5, 6])) {
             $this->setOutcome($argument);
-            if ($argument == 7) {
+            if ($argument == 6) {
                 $this->decision->any(DateOfDeath::class);
             } else {
                 $this->decision->any(LabTestResult::class);
@@ -60,16 +59,11 @@ class Outcome extends State
             $this->record->set('aefiOutcomeName', $outcome->outcome);
         }
         if ($option == 5) {
-            $outcome = $outcomes->where('outcome', '=', 'Fatal')->first();
-            $this->record->set('aefiOutcomeId', $outcome->id);
-            $this->record->set('aefiOutcomeName', $outcome->outcome);
-        }
-        if ($option == 6) {
             $outcome = $outcomes->where('outcome', '=', 'Unknown')->first();
             $this->record->set('aefiOutcomeId', $outcome->id);
             $this->record->set('aefiOutcomeName', $outcome->outcome);
         }
-        if ($option == 7) {
+        if ($option == 6) {
             $outcome = $outcomes->where('outcome', '=', 'Died')->first();
             $this->record->set('aefiOutcomeId', $outcome->id);
             $this->record->set('aefiOutcomeName', $outcome->outcome);

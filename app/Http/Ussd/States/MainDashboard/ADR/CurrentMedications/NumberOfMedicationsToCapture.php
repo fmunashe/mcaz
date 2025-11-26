@@ -2,6 +2,7 @@
 
 namespace App\Http\Ussd\States\MainDashboard\ADR\CurrentMedications;
 
+use App\Http\Ussd\States\MainDashboard\ADR\RelevantPastDrugTherapy\NumberOfDrugTherapyToCapture;
 use Sparors\Ussd\State;
 
 class NumberOfMedicationsToCapture extends State
@@ -18,7 +19,10 @@ class NumberOfMedicationsToCapture extends State
             return;
         }
         $this->record->set('numberOfMedicationsToCapture', $argument);
-        $this->record->set('medicationCount', 1);
+        $this->record->set('medicationCount', 0);
+        if ($argument == 0) {
+            $this->decision->any(NumberOfDrugTherapyToCapture::class);
+        }
         $this->decision->any(BrandName::class);
     }
 }

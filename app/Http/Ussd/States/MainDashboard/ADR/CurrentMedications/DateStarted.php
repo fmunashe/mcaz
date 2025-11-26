@@ -2,6 +2,7 @@
 
 namespace App\Http\Ussd\States\MainDashboard\ADR\CurrentMedications;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Sparors\Ussd\State;
 
@@ -40,6 +41,11 @@ class DateStarted extends State
         }
         $formattedDate = $year . '-' . $month . '-' . $day;
         $currentCount = $this->record->get('medicationCount');
+        $reactionStartDate = $this->record->get('dateOfOnset');
+        if (Carbon::parse($formattedDate)->lt(Carbon::parse($reactionStartDate))) {
+            $this->decision->any(self::class);
+            return;
+        }
         $this->record->set('dateStarted'.$currentCount, $formattedDate);
         $this->decision->any(DateStopped::class);
     }

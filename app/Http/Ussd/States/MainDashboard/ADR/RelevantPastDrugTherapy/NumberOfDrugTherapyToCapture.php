@@ -2,6 +2,8 @@
 
 namespace App\Http\Ussd\States\MainDashboard\ADR\RelevantPastDrugTherapy;
 
+use App\Http\Ussd\States\MainDashboard\ADR\MedicalHistory\LabTestResults;
+use App\Http\Ussd\States\MainDashboard\ADR\MedicalHistory\RelevantMedicalHistory;
 use Sparors\Ussd\State;
 
 class NumberOfDrugTherapyToCapture extends State
@@ -18,7 +20,10 @@ class NumberOfDrugTherapyToCapture extends State
             return;
         }
         $this->record->set('numberOfDrugTherapyToCapture', $argument);
-        $this->record->set('drugTherapyCount', 1);
+        $this->record->set('drugTherapyCount', 0);
+        if ($argument == 0) {
+            $this->decision->any(RelevantMedicalHistory::class);
+        }
         $this->decision->any(BrandName::class);
     }
 }

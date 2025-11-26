@@ -10,13 +10,12 @@ class Outcome extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Relevant medical history outcome');
+        $this->menu->line('Outcome');
         $this->menu->paginateListing([
             'Recovered or resolved',
             'Recovering or resolving',
             'Recovered or resolved with sequelae',
             'Not recovered or not resolved',
-            'Fatal',
             'Unknown',
             'Died'
         ], 1, 8, '. ');
@@ -24,7 +23,7 @@ class Outcome extends State
 
     protected function afterRendering(string $argument): void
     {
-        if (empty($argument) || !in_array($argument, [1, 2, 3, 4, 5, 6, 7])) {
+        if (empty($argument) || !in_array($argument, [1, 2, 3, 4, 5, 6])) {
             $this->decision->any(self::class);
             return;
         }
@@ -52,14 +51,10 @@ class Outcome extends State
             $this->record->set('adrPastMedicalHistoryOutcomeId', $outcome->id);
         }
         if ($option == 5) {
-            $outcome = $outcomes->where('outcome', '=', 'Fatal')->first();
-            $this->record->set('adrPastMedicalHistoryOutcomeId', $outcome->id);
-        }
-        if ($option == 6) {
             $outcome = $outcomes->where('outcome', '=', 'Unknown')->first();
             $this->record->set('adrPastMedicalHistoryOutcomeId', $outcome->id);
         }
-        if ($option == 7) {
+        if ($option == 6) {
             $outcome = $outcomes->where('outcome', '=', 'Died')->first();
             $this->record->set('adrPastMedicalHistoryOutcomeId', $outcome->id);
         }

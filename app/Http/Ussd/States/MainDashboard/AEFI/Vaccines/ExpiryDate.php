@@ -15,6 +15,6 @@ class ExpiryDate extends State
     {
         $count = $this->record->get('vaccineCount');
         $this->record->set('expiryDate'.$count, $argument);
-        $this->decision->any(DiluentBatchNumber::class);
+        $this->decision->any(CheckDiluent::class);
     }
 }

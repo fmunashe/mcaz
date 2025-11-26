@@ -2,7 +2,7 @@
 
 namespace App\Http\Ussd\Actions\MainDashboard\ADR\RelevantPastDrugTherapy;
 
-use App\Http\Ussd\States\MainDashboard\ADR\MedicalHistory\LabTestResults;
+use App\Http\Ussd\States\MainDashboard\ADR\MedicalHistory\RelevantMedicalHistory;
 use App\Http\Ussd\States\MainDashboard\ADR\RelevantPastDrugTherapy\BrandName;
 use Sparors\Ussd\Action;
 
@@ -16,6 +16,6 @@ class CheckDrugTherapyCount extends Action
             $this->record->set('drugTherapyCount', $count + 1);
             return BrandName::class;
         }
-        return LabTestResults::class;
+        return RelevantMedicalHistory::class;
     }
 }

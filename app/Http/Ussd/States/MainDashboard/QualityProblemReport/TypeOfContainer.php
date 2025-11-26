@@ -8,7 +8,7 @@ class TypeOfContainer extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Type of Container');
+        $this->menu->line('Size and type of Container');
     }
 
     protected function afterRendering(string $argument): void

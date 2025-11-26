@@ -4,7 +4,6 @@ namespace App\Http\Ussd\States\MainDashboard\ADR;
 
 use App\Models\ADR;
 use App\Models\AdverseReaction;
-use App\Models\Client;
 use App\Models\CurrentMedication;
 use App\Models\RelevantMedicalHistory;
 use App\Models\RelevantPastDrugTherapy;
@@ -54,7 +53,7 @@ class InstitutionAddress extends State
         $institutionName = $this->record->get('institutionName');
         $institutionAddress = $this->record->get('institutionAddress');
         $client = $this->getUserByPhone($this->record->get('phoneNumber'));
-        if ($client){
+        if ($client) {
             $this->record->set('clientId', $client->id);
         }
 
@@ -89,7 +88,7 @@ class InstitutionAddress extends State
     private function submitCurrentMedications(ADR $adr): void
     {
         $total = $this->record->get('medicationCount');
-        for ($i = 1; $i <= $total; $i++) {
+        for ($i = 0; $i < $total; $i++) {
             $brandName = $this->record->get('brandName' . $i);
             $batchNumber = $this->record->get('batchNumber' . $i);
             $dose = $this->record->get('dose' . $i);
@@ -97,6 +96,7 @@ class InstitutionAddress extends State
             $startDate = $this->record->get('dateStarted' . $i);
             $endDate = $this->record->get('dateStopped' . $i);
             $suspectedMedication = $this->record->get('suspectedMedication' . $i);
+            $administrationMethod = $this->record->get('administrationMethod' . $i);
 
             CurrentMedication::create([
                 'a_d_r_id' => $adr->id,
@@ -104,6 +104,7 @@ class InstitutionAddress extends State
                 'batch_number' => $batchNumber,
                 'dose' => $dose,
                 'frequency' => $frequency,
+                'medication_administration_method' => $administrationMethod,
                 'date_started' => $startDate,
                 'date_stopped' => $endDate,
                 'suspected_medicine' => $suspectedMedication
@@ -114,7 +115,7 @@ class InstitutionAddress extends State
     private function submitDrugTherapies(ADR $adr): void
     {
         $total = $this->record->get('drugTherapyCount');
-        for ($i = 1; $i <= $total; $i++) {
+        for ($i = 0; $i < $total; $i++) {
             $brandName = $this->record->get('drugTherapyBrandName' . $i);
             $batchNumber = $this->record->get('drugTherapyBatchNumber' . $i);
             $dose = $this->record->get('drugTherapyDose' . $i);
@@ -146,7 +147,9 @@ class InstitutionAddress extends State
             'a_d_r_id' => $adr->id,
             'lab_test_results' => $AdrLabTestResults,
             'action_taken_id' => $adrActionTaken,
-            'a_d_r_outcome_id' => $adrPastMedicalHistoryOutcomeId
+            'a_d_r_outcome_id' => $adrPastMedicalHistoryOutcomeId,
+            'relevant_medical_history' => $this->record->get('adrRelevantMedicalHistory'),
+            'previous_illness' => $this->record->get('adrPreviousIllness')
         ]);
 
     }

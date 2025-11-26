@@ -4,11 +4,11 @@ namespace App\Http\Ussd\States\MainDashboard\ADR\CurrentMedications;
 
 use Sparors\Ussd\State;
 
-class Dose extends State
+class MethodOfAdministration extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Enter dose '.$this->record->get('medicationCount').' (e.g. 500mg, or 10ml)');
+        $this->menu->line('How was the medicine administered e.g oral, injection into muscle (intramuscular, into the eye, inhalation etc)');
     }
 
     protected function afterRendering(string $argument): void
@@ -18,7 +18,7 @@ class Dose extends State
             return;
         }
         $currentCount = $this->record->get('medicationCount');
-        $this->record->set('dose'.$currentCount, $argument);
-        $this->decision->any(Frequency::class);
+        $this->record->set('administrationMethod'.$currentCount, $argument);
+        $this->decision->any(DateStarted::class);
     }
 }

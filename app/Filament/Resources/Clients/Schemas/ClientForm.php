@@ -25,15 +25,11 @@ class ClientForm
                     ->required(),
                 TextInput::make('username')
                     ->required(),
-                TextInput::make('pin')
-                    ->required(),
                 Select::make('language_id')
                     ->relationship('language', 'name')
                     ->required(),
                 Select::make('role_id')
                     ->relationship('role', 'name')
-                    ->required(),
-                TextInput::make('otp')
                     ->required(),
                 Toggle::make('accepted_terms')
                     ->required(),
