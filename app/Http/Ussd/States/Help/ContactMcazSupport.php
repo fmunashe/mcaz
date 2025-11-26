@@ -18,12 +18,13 @@ class ContactMcazSupport extends State
             'ICT Unit',
             'Customer Service',
             'Toll Free Numbers',
+            'Talk to an agent',
             'Back'], 1, 10, '. ');
     }
 
     protected function afterRendering(string $argument): void
     {
-        if (empty($argument) || !in_array($argument, [1, 2, 3, 4, 5, 6, 7])) {
+        if (empty($argument) || !in_array($argument, [1, 2, 3, 4, 5, 6, 7,8])) {
             $this->decision->any(self::class);
             return;
         }
@@ -33,7 +34,8 @@ class ContactMcazSupport extends State
         $this->decision->equal('4', ICTUnit::class);
         $this->decision->equal('5', CustomerService::class);
         $this->decision->equal('6', TollFreeNumbers::class);
-        $this->decision->equal('7', CheckLoggedIn::class);
+        $this->decision->equal('7', TalkToAgent::class);
+        $this->decision->equal('8', CheckLoggedIn::class);
         $this->decision->any(InvalidMenuSelection::class);
     }
 }

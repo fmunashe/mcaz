@@ -23,6 +23,7 @@ class HelpAndSupport extends State
 
     protected function afterRendering(string $argument): void
     {
+        if ($argument)
         $this->decision->equal('1', WhatIsPharmacovigilance::class);
         $this->decision->equal('2', WhatIsAdrAefiProductDefect::class);
         $this->decision->equal('3', HowToReportAdrAefiProductDefectComplaint::class);
