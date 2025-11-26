@@ -46,7 +46,7 @@ class ReporterSignature extends State
         $dateProblemObserved = $this->record->get('dateProblemObserved');
         $productAvailableForExamination = $this->record->get('productAvailableForExamination');
         $reporterSignature = $this->record->get('reporterSignature');
-        $client = $this->getUserByPhone($this->record->get('phoneNumber'))->first();
+        $client = $this->getUserByPhone($this->record->get('phoneNumber'));
         if ($client) {
             $this->record->set('clientId', $client->id);
         }
