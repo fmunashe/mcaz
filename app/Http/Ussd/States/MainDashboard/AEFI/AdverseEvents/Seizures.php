@@ -19,7 +19,7 @@ class Seizures extends State
     {
         if ($argument == '1') {
             $this->record->set('seizures', 'Yes');
-            $this->decision->any(Abscess::class);
+            $this->decision->any(Febrile::class);
         }
         if ($argument == '2') {
             $this->record->set('seizures', 'No');

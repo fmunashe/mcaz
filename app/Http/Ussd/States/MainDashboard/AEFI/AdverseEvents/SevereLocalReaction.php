@@ -10,8 +10,8 @@ class SevereLocalReaction extends State
     {
         $this->menu->line('Severe local reaction');
         $this->menu->paginateListing([
-            'Yes',
-            'No'
+            'Beyond nearest joint',
+            'More than 3 days'
         ], 1, 2, '. ');
     }
 
@@ -19,10 +19,12 @@ class SevereLocalReaction extends State
     {
         if ($argument == '1') {
             $this->record->set('severeLocalReaction', 'Yes');
+            $this->record->set('beyondNearestJoint', 'Yes');
             $this->decision->any(Seizures::class);
         }
         if ($argument == '2') {
-            $this->record->set('severeLocalReaction', 'No');
+            $this->record->set('severeLocalReaction', 'Yes');
+            $this->record->set('beyondNearestJoint', 'No');
             $this->decision->any(Seizures::class);
         }
         $this->decision->any(SevereLocalReaction::class);

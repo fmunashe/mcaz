@@ -19,11 +19,11 @@ class Fever extends State
     {
         if ($argument == '1') {
             $this->record->set('fever', 'Yes');
-            $this->decision->any(BeyondNearestJoint::class);
+            $this->decision->any(Other::class);
         }
         if ($argument == '2') {
             $this->record->set('fever', 'No');
-            $this->decision->any(BeyondNearestJoint::class);
+            $this->decision->any(Other::class);
         }
         $this->decision->any(Fever::class);
     }

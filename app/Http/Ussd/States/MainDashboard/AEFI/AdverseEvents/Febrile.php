@@ -8,10 +8,10 @@ class Febrile extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Febrile');
+        $this->menu->line('Febrile or Afebrile');
         $this->menu->paginateListing([
-            'Yes',
-            'No'
+            'Febrile',
+            'Afebrile'
         ], 1, 2, '. ');
     }
 
@@ -19,11 +19,13 @@ class Febrile extends State
     {
         if ($argument == '1') {
             $this->record->set('febrile', 'Yes');
-            $this->decision->any(Afebrile::class);
+            $this->record->set('afebrile', 'No');
+            $this->decision->any(Abscess::class);
         }
         if ($argument == '2') {
             $this->record->set('febrile', 'No');
-            $this->decision->any(Afebrile::class);
+            $this->record->set('afebrile', 'Yes');
+            $this->decision->any(Abscess::class);
         }
         $this->decision->any(Febrile::class);
     }

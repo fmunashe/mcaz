@@ -9,6 +9,7 @@ use App\Models\RelevantMedicalHistory;
 use App\Models\RelevantPastDrugTherapy;
 use App\OTPGeneration;
 use App\UssdLoggedInUser;
+use Carbon\Carbon;
 use Sparors\Ussd\State;
 
 class InstitutionAddress extends State
@@ -39,7 +40,7 @@ class InstitutionAddress extends State
 
         $patientName = $this->record->get('patientName');
         $patientDob = $this->record->get('dob');
-        $age = $this->record->get('age');
+//        $age = $this->record->get('age');
         $hospitalName = $this->record->get('hospitalName');
         $hospitalNumber = $this->record->get('hospitalNumber');
         $vctNumber = $this->record->get('vctNumber');
@@ -57,6 +58,10 @@ class InstitutionAddress extends State
             $this->record->set('clientId', $client->id);
         }
 
+        $birth = Carbon::createFromFormat('Y-m-d', $patientDob);
+        $today = Carbon::now();
+
+        $age = $birth->diffInYears($today);
 
         $adr = ADR::create([
             'client_id' => $this->record->get('clientId'),

@@ -19,11 +19,12 @@ class BeyondNearestJoint extends State
     {
         if ($argument == '1') {
             $this->record->set('beyondNearestJoint', 'Yes');
-            $this->decision->any(Febrile::class);
+
+            $this->decision->any(Other::class);
         }
         if ($argument == '2') {
             $this->record->set('beyondNearestJoint', 'No');
-            $this->decision->any(Febrile::class);
+            $this->decision->any(Other::class);
         }
         $this->decision->any(BeyondNearestJoint::class);
     }
