@@ -7,7 +7,6 @@ use App\Models\AdverseEvent;
 use App\Models\AEFI;
 use App\Models\AEFIAdverseEvent;
 use App\Models\AEFISeverity;
-use App\Models\Client;
 use App\Models\RelevantMedicalHistory;
 use App\Models\Vaccine;
 use App\OTPGeneration;

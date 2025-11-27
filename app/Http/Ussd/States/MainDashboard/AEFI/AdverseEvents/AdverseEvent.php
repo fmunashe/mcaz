@@ -28,6 +28,6 @@ class AdverseEvent extends State
 
     protected function afterRendering(string $argument): void
     {
-        //
+        // to be implemented
     }
 }

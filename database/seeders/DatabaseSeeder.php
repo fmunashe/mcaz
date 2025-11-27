@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             AdverseEventSeeder::class,
             DefectSeeder::class,
             AgeGroupSeeder::class,
+            ReporterDesignationSeeder::class
         ]);
     }
 }

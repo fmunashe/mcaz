@@ -10,7 +10,7 @@ class Gender extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Patient Gender');
+        $this->menu->line('Sex');
         $this->menu->paginateListing([
             'Male',
             'Female'

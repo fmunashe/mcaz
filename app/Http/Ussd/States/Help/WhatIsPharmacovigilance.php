@@ -8,7 +8,7 @@ class WhatIsPharmacovigilance extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Pharmacovigilance is the monitoring and evaluation of drug side effects to ensure medicines remain safe and effective after they reach the market');
+        $this->menu->line('Pharmacovigilance is the science and activities relating to the detection, assessment, understanding and prevention of adverse effects or any other medicines-related problem. It aims at getting the best outcome from treatment with medicines.');
         $this->menu->paginateListing([
             'Back',
         ], 1, 1, '. ');

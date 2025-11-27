@@ -2,19 +2,41 @@
 
 namespace App\Http\Ussd\States\MainDashboard\AEFI\Vaccines;
 
+use Illuminate\Support\Str;
 use Sparors\Ussd\State;
 
 class ExpiryDate extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Expiry date');
+        $this->menu->line('Expiry date format ddmmyyyy e.g 01012020');
     }
 
     protected function afterRendering(string $argument): void
     {
+        if (Str::length($argument) != 8) {
+            $this->decision->any(self::class);
+            return;
+        }
+
+        // Convert ddmmyyyy format to Y-m-d format
+        $day = substr($argument, 0, 2);
+        $month = substr($argument, 2, 2);
+        $year = substr($argument, 4, 4);
+
+        if ($month > 12) {
+            $this->decision->any(self::class);
+            return;
+        }
+
+        // Validate the date
+        if (!checkdate($month, $day, $year)) {
+            $this->decision->any(self::class);
+            return;
+        }
+        $formattedDate = $year . '-' . $month . '-' . $day;
         $count = $this->record->get('vaccineCount');
-        $this->record->set('expiryDate'.$count, $argument);
+        $this->record->set('expiryDate' . $count, $formattedDate);
         $this->decision->any(CheckDiluent::class);
     }
 }

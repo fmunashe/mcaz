@@ -8,7 +8,7 @@ class AEFIHelp extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('Any unexpected medical event occurring after a vaccine not always caused by it');
+        $this->menu->line('Any untoward medical occurrence which follows immunization and which does not necessarily have a causal relationship with the usage of the vaccine. The adverse event may be any unfavorable or unintended sign, abnormal laboratory finding symptom or disease.');
         $this->menu->paginateListing([
             'Back',
         ], 1, 1, '. ');

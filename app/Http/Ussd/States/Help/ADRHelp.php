@@ -8,7 +8,7 @@ class ADRHelp extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('A harmful or unwanted response to a medicine when taken at normal doses.');
+        $this->menu->line('Any untoward medical occurrence which follows immunization and which does not necessarily have a causal relationship with the usage of the vaccine. The adverse event may be any unfavorable or unintended sign, abnormal laboratory finding symptom or disease.');
         $this->menu->paginateListing([
             'Back',
         ], 1, 1, '. ');

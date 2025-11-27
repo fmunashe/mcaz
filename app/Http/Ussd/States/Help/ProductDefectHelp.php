@@ -8,7 +8,7 @@ class ProductDefectHelp extends State
 {
     protected function beforeRendering(): void
     {
-        $this->menu->line('A fault in a medicine or device that affects its quality or safety or performance');
+        $this->menu->line('A medicine, vaccine or medical device product that is not of the correct quality, safety or efficacy as defined by its Marketing Authorisation which may pose risk to the users.');
         $this->menu->paginateListing([
             'Back',
         ], 1, 1, '. ');

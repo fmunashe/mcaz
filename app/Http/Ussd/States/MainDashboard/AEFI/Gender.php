@@ -12,7 +12,7 @@ class Gender extends State
 
     protected function beforeRendering(): void
     {
-        $this->menu->line('Gender');
+        $this->menu->line('Sex');
         $this->menu->paginateListing([
             'Male',
             'Female'
