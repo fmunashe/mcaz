@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Filament\Resources\AEFIS\Tables;
+namespace App\Filament\Resources\CustomerComplaints\Tables;
 
+use App\Filament\Exports\CustomerComplaintExporter;
+use App\Filament\Resources\Clients\ClientResource;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
+use Filament\Actions\ExportBulkAction;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class AEFISTable
+class CustomerComplaintsTable
 {
     public static function configure(Table $table): Table
     {
@@ -17,74 +22,50 @@ class AEFISTable
             ->columns([
                 TextColumn::make('client.full_name')
                     ->searchable()
-                    ->toggleable(),
-                TextColumn::make('mcaz_reference_number')
+                    ->toggleable()
+                    ->url(fn($record) => ClientResource::getUrl('view', ['record' => $record->id]))
+                    ->openUrlInNewTab(false),
+                TextColumn::make('complaint_number')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('patient_name')
+                TextColumn::make('name')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('patient_full_address')
+                TextColumn::make('address')
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('telephone')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('gender_id')
+                TextColumn::make('email')
+                    ->label('Email address')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('pregnancy_status')
+                TextColumn::make('name_of_organisation')
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('complaint_channel')
                     ->badge()
                     ->toggleable(),
-                TextColumn::make('dob')
+                TextColumn::make('location')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('age')
+                TextColumn::make('directions_to_premises')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('reported_by')
+                TextColumn::make('person_to_be_investigated_contact')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('phone_number')
+                TextColumn::make('received_by')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('email_address')
+                TextColumn::make('signature')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('institution')
+                TextColumn::make('date_received')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('date_of_event_notification')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('date_aefi_started')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('serious')
-                    ->badge()
-                    ->toggleable(),
-                TextColumn::make('a_d_r_outcome_id')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('ageGroup.id')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('date_of_death')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('autopsy_done')
-                    ->badge()
-                    ->toggleable(),
-                TextColumn::make('investigation_needed')
-                    ->badge()
-                    ->toggleable(),
-                TextColumn::make('date_investigation_planned')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('date_report_received_at_national_level')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('aefi_worldwide_unique_id')
+                TextColumn::make('status')
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('created_at')
@@ -103,9 +84,25 @@ class AEFISTable
                 ViewAction::make(),
                 EditAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(CustomerComplaintExporter::class)
+                    ->columnMappingColumns(3)
+                    ->formats([
+                        ExportFormat::Xlsx,
+                        ExportFormat::Csv,
+                    ]),
+            ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make()
+                        ->exporter(CustomerComplaintExporter::class)
+                        ->columnMappingColumns(3)
+                        ->formats([
+                            ExportFormat::Xlsx,
+                            ExportFormat::Csv,
+                        ]),
                 ]),
             ]);
     }

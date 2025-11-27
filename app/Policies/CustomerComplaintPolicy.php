@@ -13,7 +13,9 @@ class CustomerComplaintPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class CustomerComplaintPolicy
      */
     public function view(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_access');
+        })->exists();
     }
 
     /**
@@ -37,7 +41,9 @@ class CustomerComplaintPolicy
      */
     public function update(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +51,9 @@ class CustomerComplaintPolicy
      */
     public function delete(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +61,9 @@ class CustomerComplaintPolicy
      */
     public function restore(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +71,8 @@ class CustomerComplaintPolicy
      */
     public function forceDelete(User $user, CustomerComplaint $customerComplaint): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'customer_complaints_delete');
+        })->exists();
     }
 }

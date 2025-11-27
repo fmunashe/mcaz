@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\DatabaseNotificationsPosition;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -29,6 +30,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->databaseNotifications(position: DatabaseNotificationsPosition::Topbar)
+            ->databaseNotificationsPolling('30s')
             ->id('admin')
             ->path('admin')
             ->registration()
@@ -76,41 +79,41 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogoHeight("50px")
             ->favicon(asset('logo.png'))
             ->maxContentWidth(Width::Full)
-        ->navigationGroups([
-        NavigationGroup::make()
-            ->label('Households')
-            ->icon('heroicon-o-user-group'),
-        NavigationGroup::make()
-            ->label('Medical Dashboard')
-            ->icon('heroicon-s-plus'),
-        NavigationGroup::make()
-            ->label('Assessments')
-            ->icon('heroicon-o-book-open'),
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Households')
+                    ->icon('heroicon-o-user-group'),
+                NavigationGroup::make()
+                    ->label('Medical Dashboard')
+                    ->icon('heroicon-s-plus'),
+                NavigationGroup::make()
+                    ->label('Assessments')
+                    ->icon('heroicon-o-book-open'),
 
-        NavigationGroup::make()
-            ->label('Forms')
-            ->icon('heroicon-o-pencil'),
-        NavigationGroup::make()
-            ->label('Services')
-            ->icon('heroicon-o-sun'),
-        NavigationGroup::make()
-            ->label('Commodity Dashboard')
-            ->icon('heroicon-o-truck'),
-        NavigationGroup::make()
-            ->label('Call Centre')
-            ->icon('heroicon-o-phone'),
-        NavigationGroup::make()
-            ->label('User Management')
-            ->icon('heroicon-o-user-group'),
+                NavigationGroup::make()
+                    ->label('Forms')
+                    ->icon('heroicon-o-pencil'),
+                NavigationGroup::make()
+                    ->label('Services')
+                    ->icon('heroicon-o-sun'),
+                NavigationGroup::make()
+                    ->label('Commodity Dashboard')
+                    ->icon('heroicon-o-truck'),
+                NavigationGroup::make()
+                    ->label('Call Centre')
+                    ->icon('heroicon-o-phone'),
+                NavigationGroup::make()
+                    ->label('User Management')
+                    ->icon('heroicon-o-user-group'),
 //            ->icon('heroicon-o-key'),
-        NavigationGroup::make()
-            ->label('Config Lists')
-            ->icon('heroicon-o-cog-6-tooth'),
+                NavigationGroup::make()
+                    ->label('Config Lists')
+                    ->icon('heroicon-o-cog-6-tooth'),
 
-        NavigationGroup::make()
-            ->label(fn(): string => __('navigation.settings'))
-            ->icon('heroicon-o-cog-6-tooth')
-            ->collapsed(),
-    ]);
+                NavigationGroup::make()
+                    ->label(fn(): string => __('navigation.settings'))
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+            ]);
     }
 }

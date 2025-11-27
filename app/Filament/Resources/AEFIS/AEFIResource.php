@@ -23,9 +23,9 @@ class AEFIResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::PlusCircle;
 
     protected static ?string $recordTitleAttribute = 'Adverse Events Following Immunisation';
-    protected static ?string $navigationLabel = 'Adverse Events Following Immunisation';
-    protected static ?string $modelLabel = 'Adverse Event Following Immunisation';
-    protected static ?string $pluralModelLabel = 'Adverse Events Following Immunisation';
+    protected static ?string $navigationLabel = 'AEFI';
+    protected static ?string $modelLabel = 'AEFI';
+    protected static ?string $pluralModelLabel = 'AEFIs';
 
     public static function form(Schema $schema): Schema
     {

@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources\Clients\Tables;
 
+use App\Filament\Exports\ClientExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
+use Filament\Actions\ExportBulkAction;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
@@ -20,22 +24,30 @@ class ClientsTable
         return $table
             ->columns([
                 TextColumn::make('full_name')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('email')
                     ->label('Email address')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('phone')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('username')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('language.name')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('role.name')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 IconColumn::make('accepted_terms')
-                    ->boolean(),
+                    ->boolean()
+                    ->toggleable(),
                 TextColumn::make('notify_via')
-                    ->badge(),
+                    ->badge()
+                    ->toggleable(),
                 TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
@@ -56,11 +68,28 @@ class ClientsTable
                 ViewAction::make(),
                 EditAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()
+                    ->fileDisk('public')
+                    ->exporter(ClientExporter::class)
+                    ->columnMappingColumns(3)
+                    ->formats([
+                        ExportFormat::Xlsx,
+                        ExportFormat::Csv,
+                    ]),
+            ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                     ForceDeleteBulkAction::make(),
                     RestoreBulkAction::make(),
+                    ExportBulkAction::make()
+                        ->exporter(ClientExporter::class)
+                        ->columnMappingColumns(3)
+                        ->formats([
+                            ExportFormat::Xlsx,
+                            ExportFormat::Csv,
+                        ]),
                 ]),
             ]);
     }

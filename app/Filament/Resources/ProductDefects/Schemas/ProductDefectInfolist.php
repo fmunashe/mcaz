@@ -13,7 +13,7 @@ class ProductDefectInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('client.id')
+                TextEntry::make('client.full_name')
                     ->label('Client')
                     ->placeholder('-'),
                 TextEntry::make('product_name')
@@ -52,13 +52,7 @@ class ProductDefectInfolist
                 TextEntry::make('reporter_signature')
                     ->placeholder('-'),
                 TextEntry::make('report_number')
-                    ->placeholder('-'),
-                RepeatableEntry::make('tets')
-                    ->table([
-                        TableColumn::make('Author'),
-                        TableColumn::make('Title'),
-                        TableColumn::make('Published'),
-                    ])
+                    ->placeholder('-')
             ]);
     }
 }

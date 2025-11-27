@@ -11,9 +11,7 @@ class ADRInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('id')
-                    ->label('ID'),
-                TextEntry::make('client.id')
+                TextEntry::make('client.full_name')
                     ->label('Client')
                     ->placeholder('-'),
                 TextEntry::make('mcaz_reference_number')
@@ -51,13 +49,7 @@ class ADRInfolist
                     ->placeholder('-'),
                 TextEntry::make('status')
                     ->placeholder('-')
-                    ->columnSpanFull(),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
+                    ->columnSpanFull()
             ]);
     }
 }

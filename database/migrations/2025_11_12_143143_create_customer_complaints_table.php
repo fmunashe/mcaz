@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('telephone')->nullable();
             $table->string('email')->nullable();
             $table->string('name_of_organisation')->nullable();
-            $table->enum('complaint_channel',['Written','Email','Telephone','Verbal','Whatsapp','Facebook','Instagram','Twitter','USSD'])->nullable()->default('USSD');
+            $table->enum('complaint_channel',['Written','Email','Telephone','Verbal','Whatsapp','Facebook','Instagram','Twitter','USSD'])->nullable()->default('Whatsapp');
             $table->longText('details_of_complaint')->nullable();
             $table->string('location')->nullable();
             $table->longText('description_of_premises')->nullable();

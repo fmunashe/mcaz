@@ -23,9 +23,9 @@ class ADRResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Heart;
 
     protected static ?string $recordTitleAttribute = 'Adverse Drug Reactions';
-    protected static ?string $navigationLabel = 'Adverse Drug Reactions';
-    protected static ?string $modelLabel = 'Adverse Drug Reaction';
-    protected static ?string $pluralModelLabel = 'Adverse Drug Reactions';
+    protected static ?string $navigationLabel = 'ADR';
+    protected static ?string $modelLabel = 'ADR';
+    protected static ?string $pluralModelLabel = 'ADRs';
 
     public static function form(Schema $schema): Schema
     {

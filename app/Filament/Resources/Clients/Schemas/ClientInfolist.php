@@ -13,19 +13,15 @@ class ClientInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('id')
-                    ->label('ID'),
                 TextEntry::make('full_name'),
                 TextEntry::make('email')
                     ->label('Email address'),
                 TextEntry::make('phone'),
                 TextEntry::make('username'),
-                TextEntry::make('pin'),
                 TextEntry::make('language.name')
                     ->label('Language'),
                 TextEntry::make('role.name')
                     ->label('Role'),
-                TextEntry::make('otp'),
                 IconEntry::make('accepted_terms')
                     ->boolean(),
                 TextEntry::make('notify_via')
@@ -35,13 +31,7 @@ class ClientInfolist
                     ->columnSpanFull(),
                 TextEntry::make('deleted_at')
                     ->dateTime()
-                    ->visible(fn (Client $record): bool => $record->trashed()),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
+                    ->visible(fn(Client $record): bool => $record->trashed())
             ]);
     }
 }
