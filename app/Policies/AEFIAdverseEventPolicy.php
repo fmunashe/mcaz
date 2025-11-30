@@ -13,7 +13,9 @@ class AEFIAdverseEventPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class AEFIAdverseEventPolicy
      */
     public function view(User $user, AEFIAdverseEvent $aEFIAdverseEvent): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class AEFIAdverseEventPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class AEFIAdverseEventPolicy
      */
     public function update(User $user, AEFIAdverseEvent $aEFIAdverseEvent): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class AEFIAdverseEventPolicy
      */
     public function delete(User $user, AEFIAdverseEvent $aEFIAdverseEvent): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class AEFIAdverseEventPolicy
      */
     public function restore(User $user, AEFIAdverseEvent $aEFIAdverseEvent): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class AEFIAdverseEventPolicy
      */
     public function forceDelete(User $user, AEFIAdverseEvent $aEFIAdverseEvent): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_event_delete');
+        })->exists();
     }
 }

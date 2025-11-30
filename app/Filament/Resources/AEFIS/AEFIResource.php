@@ -6,6 +6,8 @@ use App\Filament\Resources\AEFIS\Pages\CreateAEFI;
 use App\Filament\Resources\AEFIS\Pages\EditAEFI;
 use App\Filament\Resources\AEFIS\Pages\ListAEFIS;
 use App\Filament\Resources\AEFIS\Pages\ViewAEFI;
+use App\Filament\Resources\AEFIS\RelationManagers\AdverseEventsRelationManager;
+use App\Filament\Resources\AEFIS\RelationManagers\VaccinesRelationManager;
 use App\Filament\Resources\AEFIS\Schemas\AEFIForm;
 use App\Filament\Resources\AEFIS\Schemas\AEFIInfolist;
 use App\Filament\Resources\AEFIS\Tables\AEFISTable;
@@ -45,7 +47,8 @@ class AEFIResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            VaccinesRelationManager::class,
+            AdverseEventsRelationManager::class,
         ];
     }
 

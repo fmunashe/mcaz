@@ -59,6 +59,16 @@ class PermissionSeeder extends Seeder
             ['id' => 44, 'title' => 'past_drug_therapy_edit'],
             ['id' => 45, 'title' => 'past_drug_therapy_delete'],
             ['id' => 46, 'title' => 'past_drug_therapy_create'],
+            ['id' => 47, 'title' => 'adverse_event_access'],
+            ['id' => 48, 'title' => 'adverse_event_view'],
+            ['id' => 49, 'title' => 'adverse_event_edit'],
+            ['id' => 50, 'title' => 'adverse_event_delete'],
+            ['id' => 51, 'title' => 'adverse_event_create'],
+            ['id' => 52, 'title' => 'vaccine_access'],
+            ['id' => 53, 'title' => 'vaccine_view'],
+            ['id' => 54, 'title' => 'vaccine_edit'],
+            ['id' => 55, 'title' => 'vaccine_delete'],
+            ['id' => 56, 'title' => 'vaccine_create']
         ];
 
         Permission::insert($permissions);

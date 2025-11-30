@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Vaccine;
-use Illuminate\Auth\Access\Response;
 
 class VaccinePolicy
 {
@@ -13,7 +12,9 @@ class VaccinePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +22,9 @@ class VaccinePolicy
      */
     public function view(User $user, Vaccine $vaccine): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +32,9 @@ class VaccinePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +42,9 @@ class VaccinePolicy
      */
     public function update(User $user, Vaccine $vaccine): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +52,9 @@ class VaccinePolicy
      */
     public function delete(User $user, Vaccine $vaccine): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +62,9 @@ class VaccinePolicy
      */
     public function restore(User $user, Vaccine $vaccine): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +72,8 @@ class VaccinePolicy
      */
     public function forceDelete(User $user, Vaccine $vaccine): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'vaccine_delete');
+        })->exists();
     }
 }

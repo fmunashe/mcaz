@@ -63,7 +63,7 @@ class AEFISTable
                 TextColumn::make('serious')
                     ->badge()
                     ->toggleable(),
-                TextColumn::make('a_d_r_outcome_id')
+                TextColumn::make('aDROutcome.outcome')
                     ->label('Outcome')
                     ->searchable()
                     ->toggleable(),
