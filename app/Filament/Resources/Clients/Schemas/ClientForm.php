@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\Clients\Schemas;
 
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
@@ -27,16 +27,22 @@ class ClientForm
                     ->required(),
                 Select::make('language_id')
                     ->relationship('language', 'name')
-                    ->required(),
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Select::make('role_id')
                     ->relationship('role', 'name')
-                    ->required(),
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Toggle::make('accepted_terms')
                     ->required(),
                 Select::make('notify_via')
                     ->options(['sms' => 'Sms', 'email' => 'Email'])
                     ->default('email')
-                    ->required(),
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Textarea::make('institution')
                     ->columnSpanFull(),
             ]);

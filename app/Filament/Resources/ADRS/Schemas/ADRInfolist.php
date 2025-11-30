@@ -10,6 +10,7 @@ class ADRInfolist
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->inlineLabel()
             ->components([
                 TextEntry::make('client.full_name')
                     ->label('Client')
@@ -32,8 +33,8 @@ class ADRInfolist
                     ->placeholder('-'),
                 TextEntry::make('age')
                     ->placeholder('-'),
-                TextEntry::make('gender.id')
-                    ->label('Gender')
+                TextEntry::make('gender.gender')
+                    ->label('Sex')
                     ->placeholder('-'),
                 TextEntry::make('reported_by')
                     ->placeholder('-'),
@@ -49,7 +50,6 @@ class ADRInfolist
                     ->placeholder('-'),
                 TextEntry::make('status')
                     ->placeholder('-')
-                    ->columnSpanFull()
             ]);
     }
 }

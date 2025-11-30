@@ -17,7 +17,7 @@ class ADR extends Model
 
     public function adverseReactions(): HasMany
     {
-        return $this->hasMany(AdverseReaction::class);
+        return $this->hasMany(AdverseReaction::class,'a_d_r_id','id');
     }
 
     public function pastDrugTherapy(): HasMany

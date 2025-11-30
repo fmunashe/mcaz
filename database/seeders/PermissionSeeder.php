@@ -38,7 +38,27 @@ class PermissionSeeder extends Seeder
             ['id' => 23, 'title' => 'client_edit'],
             ['id' => 24, 'title' => 'client_delete'],
             ['id' => 25, 'title' => 'client_create'],
-            ['id' => 26, 'title' => 'client_show']
+            ['id' => 26, 'title' => 'client_show'],
+            ['id' => 27, 'title' => 'adverse_reaction_access'],
+            ['id' => 28, 'title' => 'adverse_reaction_view'],
+            ['id' => 29, 'title' => 'adverse_reaction_edit'],
+            ['id' => 30, 'title' => 'adverse_reaction_delete'],
+            ['id' => 31, 'title' => 'adverse_reaction_create'],
+            ['id' => 32, 'title' => 'duration_access'],
+            ['id' => 33, 'title' => 'duration_view'],
+            ['id' => 34, 'title' => 'duration_edit'],
+            ['id' => 35, 'title' => 'duration_delete'],
+            ['id' => 36, 'title' => 'duration_create'],
+            ['id' => 37, 'title' => 'current_medication_access'],
+            ['id' => 38, 'title' => 'current_medication_view'],
+            ['id' => 39, 'title' => 'current_medication_edit'],
+            ['id' => 40, 'title' => 'current_medication_delete'],
+            ['id' => 41, 'title' => 'current_medication_create'],
+            ['id' => 42, 'title' => 'past_drug_therapy_access'],
+            ['id' => 43, 'title' => 'past_drug_therapy_view'],
+            ['id' => 44, 'title' => 'past_drug_therapy_edit'],
+            ['id' => 45, 'title' => 'past_drug_therapy_delete'],
+            ['id' => 46, 'title' => 'past_drug_therapy_create'],
         ];
 
         Permission::insert($permissions);

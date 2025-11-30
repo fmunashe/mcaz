@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources\ADRS\Tables;
 
+use App\Filament\Exports\ADRExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
+use Filament\Actions\ExportBulkAction;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -45,7 +49,7 @@ class ADRSTable
                 TextColumn::make('age')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('gender.id')
+                TextColumn::make('gender.gender')
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('reported_by')
@@ -82,9 +86,25 @@ class ADRSTable
                 ViewAction::make(),
                 EditAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(ADRExporter::class)
+                    ->columnMappingColumns(3)
+                    ->formats([
+                        ExportFormat::Xlsx,
+                        ExportFormat::Csv,
+                    ]),
+            ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make()
+                        ->exporter(ADRExporter::class)
+                        ->columnMappingColumns(3)
+                        ->formats([
+                            ExportFormat::Xlsx,
+                            ExportFormat::Csv,
+                        ]),
                 ]),
             ]);
     }

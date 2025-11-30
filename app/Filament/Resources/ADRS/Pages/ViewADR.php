@@ -16,4 +16,9 @@ class ViewADR extends ViewRecord
             EditAction::make(),
         ];
     }
+
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return false;
+    }
 }

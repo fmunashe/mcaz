@@ -19,4 +19,14 @@ class RelevantMedicalHistory extends Model
     {
         return $this->belongsTo(Adr::class);
     }
+
+    function actionTaken(): BelongsTo
+    {
+        return $this->belongsTo(ActionTaken::class);
+    }
+
+    function a_d_r_outcome(): BelongsTo
+    {
+        return $this->belongsTo(ADROutcome::class);
+    }
 }

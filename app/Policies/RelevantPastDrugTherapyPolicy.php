@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\RelevantPastDrugTherapy;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class RelevantPastDrugTherapyPolicy
 {
@@ -13,7 +12,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +22,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function view(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +32,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +42,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function update(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +52,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function delete(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +62,9 @@ class RelevantPastDrugTherapyPolicy
      */
     public function restore(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +72,8 @@ class RelevantPastDrugTherapyPolicy
      */
     public function forceDelete(User $user, RelevantPastDrugTherapy $relevantPastDrugTherapy): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'past_drug_therapy_delete');
+        })->exists();
     }
 }

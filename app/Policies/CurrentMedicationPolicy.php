@@ -13,7 +13,9 @@ class CurrentMedicationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class CurrentMedicationPolicy
      */
     public function view(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class CurrentMedicationPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class CurrentMedicationPolicy
      */
     public function update(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class CurrentMedicationPolicy
      */
     public function delete(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class CurrentMedicationPolicy
      */
     public function restore(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class CurrentMedicationPolicy
      */
     public function forceDelete(User $user, CurrentMedication $currentMedication): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'current_medication_delete');
+        })->exists();
     }
 }

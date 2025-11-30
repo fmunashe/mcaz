@@ -15,8 +15,7 @@ class GenderSeeder extends Seeder
     {
         $genders = [
             ['id' => Str::uuid(), 'gender' => 'Male'],
-            ['id' => Str::uuid(), 'gender' => 'Female'],
-            ['id' => Str::uuid(), 'gender' => 'Other'],
+            ['id' => Str::uuid(), 'gender' => 'Female']
         ];
 
         foreach ($genders as $gender) {

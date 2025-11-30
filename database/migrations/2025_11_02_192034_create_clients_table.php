@@ -14,14 +14,14 @@ return new class extends Migration {
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('full_name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('username');
-            $table->string('pin');
+            $table->string('full_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('username')->nullable();
+            $table->string('pin')->nullable();
             $table->foreignIdFor(Language::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(Role::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('otp');
+            $table->string('otp')->nullable();
             $table->boolean('accepted_terms')->default(false);
             $table->enum('notify_via', ['sms', 'email'])->default('email');
             $table->text('institution')->nullable();

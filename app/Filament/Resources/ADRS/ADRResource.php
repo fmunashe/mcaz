@@ -6,6 +6,11 @@ use App\Filament\Resources\ADRS\Pages\CreateADR;
 use App\Filament\Resources\ADRS\Pages\EditADR;
 use App\Filament\Resources\ADRS\Pages\ListADRS;
 use App\Filament\Resources\ADRS\Pages\ViewADR;
+use App\Filament\Resources\ADRS\RelationManagers\AdverseReactionsRelationManager;
+use App\Filament\Resources\ADRS\RelationManagers\CurrentMedicationsRelationManager;
+use App\Filament\Resources\ADRS\RelationManagers\MedicalHistoryRelationManager;
+use App\Filament\Resources\ADRS\RelationManagers\PastDrugTherapyRelationManager;
+use App\Filament\Resources\ADRS\RelationManagers\TestRelationManager;
 use App\Filament\Resources\ADRS\Schemas\ADRForm;
 use App\Filament\Resources\ADRS\Schemas\ADRInfolist;
 use App\Filament\Resources\ADRS\Tables\ADRSTable;
@@ -45,7 +50,10 @@ class ADRResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AdverseReactionsRelationManager::class,
+            CurrentMedicationsRelationManager::class,
+            PastDrugTherapyRelationManager::class,
+            MedicalHistoryRelationManager::class,
         ];
     }
 

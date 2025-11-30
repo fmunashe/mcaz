@@ -13,7 +13,7 @@ class DurationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class DurationPolicy
      */
     public function view(User $user, Duration $duration): bool
     {
-        return false;
+        return true;
     }
 
     /**

@@ -17,6 +17,17 @@ class AdverseReaction extends Model
 
     public  function adr(): BelongsTo
     {
-        return $this->belongsTo(ADR::class);
+        return $this->belongsTo(ADR::class,'a_d_r_id','id');
     }
+
+    public function durations(): BelongsTo
+    {
+        return $this->belongsTo(Duration::class, 'duration_id', 'id');
+    }
+
+    public function aDRSeriousReason(): BelongsTo
+    {
+        return $this->belongsTo(ADRSeriousReason::class, 'a_d_r_serious_reason_id', 'id');
+    }
+
 }

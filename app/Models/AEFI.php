@@ -45,4 +45,14 @@ class AEFI extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function aDROutcome(): BelongsTo
+    {
+        return $this->belongsTo(ADROutcome::class);
+    }
 }

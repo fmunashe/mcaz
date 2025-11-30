@@ -30,7 +30,7 @@ class AEFISTable
                 TextColumn::make('telephone')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('gender_id')
+                TextColumn::make('gender.gender')
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('pregnancy_status')
@@ -64,9 +64,10 @@ class AEFISTable
                     ->badge()
                     ->toggleable(),
                 TextColumn::make('a_d_r_outcome_id')
+                    ->label('Outcome')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('ageGroup.id')
+                TextColumn::make('ageGroup.age_group')
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('date_of_death')

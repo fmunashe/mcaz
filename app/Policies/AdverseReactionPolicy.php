@@ -13,7 +13,9 @@ class AdverseReactionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +23,9 @@ class AdverseReactionPolicy
      */
     public function view(User $user, AdverseReaction $adverseReaction): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +33,9 @@ class AdverseReactionPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +43,9 @@ class AdverseReactionPolicy
      */
     public function update(User $user, AdverseReaction $adverseReaction): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +53,9 @@ class AdverseReactionPolicy
      */
     public function delete(User $user, AdverseReaction $adverseReaction): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +63,9 @@ class AdverseReactionPolicy
      */
     public function restore(User $user, AdverseReaction $adverseReaction): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +73,8 @@ class AdverseReactionPolicy
      */
     public function forceDelete(User $user, AdverseReaction $adverseReaction): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'adverse_reaction_delete');
+        })->exists();
     }
 }

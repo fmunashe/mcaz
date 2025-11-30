@@ -32,7 +32,9 @@ class ClientPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'client_create');
+        })->exists();
     }
 
     /**
@@ -40,7 +42,9 @@ class ClientPolicy
      */
     public function update(User $user, Client $client): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'client_edit');
+        })->exists();
     }
 
     /**
@@ -48,7 +52,9 @@ class ClientPolicy
      */
     public function delete(User $user, Client $client): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'client_delete');
+        })->exists();
     }
 
     /**
@@ -56,7 +62,9 @@ class ClientPolicy
      */
     public function restore(User $user, Client $client): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'client_delete');
+        })->exists();
     }
 
     /**
@@ -64,6 +72,8 @@ class ClientPolicy
      */
     public function forceDelete(User $user, Client $client): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'client_delete');
+        })->exists();
     }
 }

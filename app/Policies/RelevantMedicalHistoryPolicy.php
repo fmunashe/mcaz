@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\RelevantMedicalHistory;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class RelevantMedicalHistoryPolicy
 {
@@ -13,7 +12,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_access');
+        })->exists();
     }
 
     /**
@@ -21,7 +22,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function view(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_view');
+        })->exists();
     }
 
     /**
@@ -29,7 +32,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_create');
+        })->exists();
     }
 
     /**
@@ -37,7 +42,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function update(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_edit');
+        })->exists();
     }
 
     /**
@@ -45,7 +52,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function delete(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_delete');
+        })->exists();
     }
 
     /**
@@ -53,7 +62,9 @@ class RelevantMedicalHistoryPolicy
      */
     public function restore(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_delete');
+        })->exists();
     }
 
     /**
@@ -61,6 +72,8 @@ class RelevantMedicalHistoryPolicy
      */
     public function forceDelete(User $user, RelevantMedicalHistory $relevantMedicalHistory): bool
     {
-        return false;
+        return $user->roles()->whereHas('permissions', function ($query) {
+            $query->where('title', 'medical_history_delete');
+        })->exists();
     }
 }

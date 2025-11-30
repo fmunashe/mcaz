@@ -10,6 +10,8 @@ class AEFIInfolist
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->inlineLabel()
+            ->columns(3)
             ->components([
                 TextEntry::make('client.full_name')
                     ->label('Client')
@@ -22,7 +24,7 @@ class AEFIInfolist
                     ->placeholder('-'),
                 TextEntry::make('telephone')
                     ->placeholder('-'),
-                TextEntry::make('gender_id')
+                TextEntry::make('gender.gender')
                     ->placeholder('-'),
                 TextEntry::make('pregnancy_status')
                     ->badge()
@@ -34,11 +36,9 @@ class AEFIInfolist
                 TextEntry::make('reported_by')
                     ->placeholder('-'),
                 TextEntry::make('designation')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
+                    ->placeholder('-'),
                 TextEntry::make('address')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
+                    ->placeholder('-'),
                 TextEntry::make('phone_number')
                     ->placeholder('-'),
                 TextEntry::make('email_address')
@@ -47,9 +47,7 @@ class AEFIInfolist
                     ->placeholder('-'),
                 TextEntry::make('date_of_event_notification')
                     ->placeholder('-'),
-                TextEntry::make('health_facility_name')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
+                TextEntry::make('health_facility_name'),
                 TextEntry::make('date_aefi_started')
                     ->placeholder('-'),
                 TextEntry::make('serious')
@@ -74,11 +72,9 @@ class AEFIInfolist
                 TextEntry::make('aefi_worldwide_unique_id')
                     ->placeholder('-'),
                 TextEntry::make('comments')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
+                    ->placeholder('-'),
                 TextEntry::make('status')
                     ->placeholder('-')
-                    ->columnSpanFull()
             ]);
     }
 }

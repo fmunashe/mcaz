@@ -18,4 +18,9 @@ class EditADR extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return false;
+    }
 }
