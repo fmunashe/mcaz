@@ -23,14 +23,16 @@ class AEFIForm
                     ->preload(),
                 TextInput::make('mcaz_reference_number')
                     ->default(self::generateReferenceNumber()),
-                TextInput::make('patient_name'),
+                TextInput::make('patient_name')
+                    ->required(),
                 TextInput::make('patient_full_address'),
                 TextInput::make('telephone')
                     ->tel(),
                 Select::make('gender_id')
                     ->relationship('gender', 'gender')
                     ->searchable()
-                    ->preload(),
+                    ->preload()
+                    ->required(),
                 Select::make('pregnancy_status')
                     ->options(['pregnant' => 'Pregnant', 'lactating' => 'Lactating', 'not_pregnant' => 'Not pregnant'])
                     ->default('not_pregnant')
@@ -39,7 +41,17 @@ class AEFIForm
                 DatePicker::make('dob'),
                 TextInput::make('age'),
                 TextInput::make('reported_by'),
-                TextInput::make('designation'),
+                Select::make('designation')
+                    ->options([
+                        'Physician',
+                        'Pharmacist',
+                        'Nurse',
+                        'Other health professional',
+                        'Lawyer',
+                        'Consumer or other non-health professional'
+                    ])
+                    ->searchable()
+                    ->preload(),
                 TextInput::make('address'),
                 TextInput::make('phone_number')
                     ->tel(),
@@ -58,7 +70,8 @@ class AEFIForm
                     ->label('Outcome')
                     ->relationship('aDROutcome', 'outcome')
                     ->searchable()
-                    ->preload(),
+                    ->preload()
+                    ->required(),
                 Select::make('age_group_id')
                     ->relationship('ageGroup', 'age_group')
                     ->searchable()
