@@ -37,7 +37,6 @@ class Dashboard extends BaseDashboard
 
     private function checkRole()
     {
-        return true;
         return auth()->user()->roles()->whereHas('permissions', function ($query) {
             $query->where('title', 'main_dashboard_access');
         })->exists();
