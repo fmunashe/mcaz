@@ -7,6 +7,7 @@ use App\Filament\Resources\AEFIS\Pages\EditAEFI;
 use App\Filament\Resources\AEFIS\Pages\ListAEFIS;
 use App\Filament\Resources\AEFIS\Pages\ViewAEFI;
 use App\Filament\Resources\AEFIS\RelationManagers\AdverseEventsRelationManager;
+use App\Filament\Resources\AEFIS\RelationManagers\RelevantMedicalHistoryRelationManager;
 use App\Filament\Resources\AEFIS\RelationManagers\VaccinesRelationManager;
 use App\Filament\Resources\AEFIS\Schemas\AEFIForm;
 use App\Filament\Resources\AEFIS\Schemas\AEFIInfolist;
@@ -49,6 +50,7 @@ class AEFIResource extends Resource
         return [
             VaccinesRelationManager::class,
             AdverseEventsRelationManager::class,
+            RelevantMedicalHistoryRelationManager::class,
         ];
     }
 
@@ -60,5 +62,10 @@ class AEFIResource extends Resource
             'view' => ViewAEFI::route('/{record}'),
             'edit' => EditAEFI::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

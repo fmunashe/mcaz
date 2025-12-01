@@ -68,9 +68,17 @@ class PermissionSeeder extends Seeder
             ['id' => 53, 'title' => 'vaccine_view'],
             ['id' => 54, 'title' => 'vaccine_edit'],
             ['id' => 55, 'title' => 'vaccine_delete'],
-            ['id' => 56, 'title' => 'vaccine_create']
+            ['id' => 56, 'title' => 'vaccine_create'],
+            ['id' => 57, 'title' => 'medical_history_access'],
+            ['id' => 58, 'title' => 'medical_history_view'],
+            ['id' => 59, 'title' => 'medical_history_edit'],
+            ['id' => 60, 'title' => 'medical_history_delete'],
+            ['id' => 61, 'title' => 'medical_history_create'],
+            ['id' => 62, 'title' => 'main_dashboard_access']
         ];
 
-        Permission::insert($permissions);
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate($permission);
+        }
     }
 }

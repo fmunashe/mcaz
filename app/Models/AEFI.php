@@ -36,6 +36,11 @@ class AEFI extends Model
         return $this->hasMany(AEFISeverity::class);
     }
 
+    public function relevantMedicalHistory(): HasMany
+    {
+        return $this->hasMany(RelevantMedicalHistory::class);
+    }
+
     protected function aefiFollowupInformation(): HasMany
     {
         return $this->hasMany(AEFIFollowupInformation::class);

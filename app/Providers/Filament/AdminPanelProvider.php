@@ -10,19 +10,17 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationGroup;
-use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\Width;
-use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -53,12 +51,10 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
-                Dashboard::class,
+
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -75,45 +71,18 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
+            ->globalSearch(false)
             ->brandLogo(asset('logo.png'))
             ->brandLogoHeight("50px")
             ->favicon(asset('logo.png'))
             ->maxContentWidth(Width::Full)
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label('Households')
-                    ->icon('heroicon-o-user-group'),
-                NavigationGroup::make()
-                    ->label('Medical Dashboard')
-                    ->icon('heroicon-s-plus'),
-                NavigationGroup::make()
-                    ->label('Assessments')
-                    ->icon('heroicon-o-book-open'),
-
-                NavigationGroup::make()
-                    ->label('Forms')
-                    ->icon('heroicon-o-pencil'),
-                NavigationGroup::make()
-                    ->label('Services')
-                    ->icon('heroicon-o-sun'),
-                NavigationGroup::make()
-                    ->label('Commodity Dashboard')
-                    ->icon('heroicon-o-truck'),
-                NavigationGroup::make()
-                    ->label('Call Centre')
-                    ->icon('heroicon-o-phone'),
-                NavigationGroup::make()
                     ->label('User Management')
                     ->icon('heroicon-o-user-group'),
-//            ->icon('heroicon-o-key'),
-                NavigationGroup::make()
-                    ->label('Config Lists')
-                    ->icon('heroicon-o-cog-6-tooth'),
-
-                NavigationGroup::make()
-                    ->label(fn(): string => __('navigation.settings'))
-                    ->icon('heroicon-o-cog-6-tooth')
-                    ->collapsed(),
+            ])
+            ->plugins([
+                FilamentApexChartsPlugin::make()
             ]);
     }
 }
