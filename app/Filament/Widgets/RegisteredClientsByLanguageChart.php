@@ -24,7 +24,10 @@ class RegisteredClientsByLanguageChart extends ApexChartWidget
 
 
         $labels = $results->pluck('language')->toArray();
-        $data = $results->pluck('value')->toArray();
+//        $data = $results->pluck('value')->toArray();
+        $data = $results->pluck('value')
+            ->map(fn ($v) => (int) $v)
+            ->toArray();
         return [
             'chart' => [
                 'type' => 'donut',
