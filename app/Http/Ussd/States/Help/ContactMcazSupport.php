@@ -16,7 +16,7 @@ class ContactMcazSupport extends State
             'Evaluations and Registration',
             'Pharmacovigilance and Clinical Trials',
             'ICT Unit',
-            'Customer Service',
+            'Public Relations and Communications',
             'Toll Free Numbers',
             'Talk to an agent',
             'Back'], 1, 10, '. ');

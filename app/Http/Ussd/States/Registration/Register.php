@@ -12,7 +12,7 @@ class Register extends State
     protected function beforeRendering(): void
     {
 
-        $roleArray = ['Healthcare Worker', 'Patient', 'Investigator', 'Sponsor', 'Other'];
+        $roleArray = ['Healthcare Worker', 'Patient', 'Other'];
         $roles = Role::query()->whereIn('name', $roleArray)->pluck('name')->toArray();
         $roles[] = 'Exit';
         $this->menu->line('Select Role')
@@ -33,12 +33,6 @@ class Register extends State
                     $this->record->set('roleName', 'Patient');
                     break;
                 case '3':
-                    $this->record->set('roleName', 'Investigator');
-                    break;
-                case '4':
-                    $this->record->set('roleName', 'Sponsor');
-                    break;
-                case '5':
                     $this->record->set('roleName', 'Other');
                     break;
             }
@@ -48,8 +42,8 @@ class Register extends State
                 $this->record->set('roleName', $role->name);
             }
         }
-        $this->decision->in(['1', '2', '3', '4', '5'], EnterFullName::class);
-        $this->decision->equal('6', ExitState::class);
+        $this->decision->in(['1', '2', '3'], EnterFullName::class);
+        $this->decision->equal('4', ExitState::class);
         $this->decision->any(InvalidMenuSelection::class);
     }
 }
