@@ -12,3 +12,7 @@ Artisan::command('inspire', function () {
 // Clean expired database cache every hour
 Schedule::command('cache:prune-stale')
     ->everyFiveMinutes();
+
+Schedule::command('queue:work')
+    ->everyTenSeconds()
+    ->withoutOverlapping();
