@@ -15,7 +15,7 @@ class NumberOfDrugTherapyToCapture extends State
 
     protected function afterRendering(string $argument): void
     {
-        if (empty($argument)) {
+        if (!is_numeric($argument)) {
             $this->decision->any(self::class);
             return;
         }
