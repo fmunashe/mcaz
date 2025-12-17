@@ -19,7 +19,7 @@ class NumberOfMedicationsToCapture extends State
             return;
         }
         $this->record->set('numberOfMedicationsToCapture', $argument);
-        $this->record->set('medicationCount', 0);
+        $this->record->set('medicationCount', 1);
         if ($argument == 0) {
             $this->decision->any(NumberOfDrugTherapyToCapture::class);
         }

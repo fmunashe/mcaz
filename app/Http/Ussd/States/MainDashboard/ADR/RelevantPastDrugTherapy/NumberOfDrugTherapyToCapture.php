@@ -20,7 +20,7 @@ class NumberOfDrugTherapyToCapture extends State
             return;
         }
         $this->record->set('numberOfDrugTherapyToCapture', $argument);
-        $this->record->set('drugTherapyCount', 0);
+        $this->record->set('drugTherapyCount', 1);
         if ($argument == 0) {
             $this->decision->any(RelevantMedicalHistory::class);
         }

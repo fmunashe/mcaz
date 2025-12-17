@@ -93,7 +93,7 @@ class InstitutionAddress extends State
     private function submitCurrentMedications(ADR $adr): void
     {
         $total = $this->record->get('medicationCount');
-        for ($i = 0; $i < $total; $i++) {
+        for ($i = 1; $i <= $total; $i++) {
             $brandName = $this->record->get('brandName' . $i);
             $batchNumber = $this->record->get('batchNumber' . $i);
             $dose = $this->record->get('dose' . $i);
@@ -120,7 +120,7 @@ class InstitutionAddress extends State
     private function submitDrugTherapies(ADR $adr): void
     {
         $total = $this->record->get('drugTherapyCount');
-        for ($i = 0; $i < $total; $i++) {
+        for ($i = 1; $i <= $total; $i++) {
             $brandName = $this->record->get('drugTherapyBrandName' . $i);
             $batchNumber = $this->record->get('drugTherapyBatchNumber' . $i);
             $dose = $this->record->get('drugTherapyDose' . $i);
