@@ -57,7 +57,7 @@ class Designation extends State
         }
     }
 
-    protected function getDesignation(string $designation): bool
+    protected function getDesignation(string $designation)
     {
         return ReporterDesignation::where('designation', $designation)->first();
     }
