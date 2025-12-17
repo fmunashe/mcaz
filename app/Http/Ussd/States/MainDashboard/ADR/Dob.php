@@ -40,6 +40,6 @@ class Dob extends State
         }
         $formattedDate = $year . '-' . $month . '-' . $day;
         $this->record->set('dob', $formattedDate);
-        $this->decision->any(Age::class);
+        $this->decision->any(HospitalName::class);
     }
 }
